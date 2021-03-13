@@ -1,7 +1,14 @@
 const router = require("express").Router();
-const { getAll, postOne } = require("../controllers/bikeController");
+const {
+  getAll,
+  postOne,
+  getOne,
+  updateOne,
+} = require("../controllers/bikeController");
 
 router.get("/", getAll);
+router.get("/:id", getOne);
 router.post("/", postOne);
+router.put("/", updateOne);
 
 module.exports = router;
