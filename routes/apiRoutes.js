@@ -4,11 +4,13 @@ const {
   postOne,
   getOne,
   updateOne,
+  deleteOne,
 } = require("../controllers/bikeController");
 
 router.get("/", getAll);
 router.get("/:id", getOne);
 router.post("/", postOne);
 router.put("/", updateOne);
+router.delete("/:id", deleteOne);
 
 module.exports = router;
