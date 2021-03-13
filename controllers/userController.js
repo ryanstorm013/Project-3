@@ -16,24 +16,28 @@ module.exports = {
   },
   getOne: async (req, res) => {
     try {
-      const oneUser = await User.fineOne({ _id: req.params.id});
+      const oneUser = await User.findOne({ _id: req.params.id });
       res.json(oneUser);
-    }
-    catch (err) {
+    } catch (err) {
       res.send(err);
     }
   },
   updateOne: async (req, res) => {
     try {
       const updateUser = await User.updateOne(
-        { _id: req.body.id },
+        { _id: req.params.id },
         { $set: req.body }
       );
       res.json(updateUser);
-    }
-    catch (err) {
+    } catch (err) {
       res.send(err);
     }
   },
-  deleteOne: async (req, res) => {},
+  deleteOne: async (req, res) => {
+    try {
+      res.json(await User.findByIdAndDelete(req.params.id));
+    } catch (err) {
+      res.send(err);
+    }
+  },
 };

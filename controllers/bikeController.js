@@ -21,7 +21,7 @@ module.exports = {
   updateOne: async (req, res) => {
     try {
       const updateBike = await Bike.updateOne(
-        { _id: req.body.id },
+        { _id: req.params.id },
         { $set: req.body }
       );
       res.json(updateBike);
@@ -47,9 +47,9 @@ module.exports = {
   },
   deleteOne: async (req, res) => {
     try {
-      res.json(await Bike.findByIdAndDelete(req.params.id))
+      res.json(await Bike.findByIdAndDelete(req.params.id));
     } catch (err) {
-      res.send(err)      
+      res.send(err);
     }
   },
 };
