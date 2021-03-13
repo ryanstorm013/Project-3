@@ -45,5 +45,11 @@ module.exports = {
       res.send(err);
     }
   },
-  deleteOne: async (req, res) => {},
+  deleteOne: async (req, res) => {
+    try {
+      res.json(await Bike.findByIdAndDelete(req.params.id))
+    } catch (err) {
+      res.send(err)      
+    }
+  },
 };
