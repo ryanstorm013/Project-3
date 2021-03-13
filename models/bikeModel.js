@@ -21,8 +21,8 @@ const bikeSchema = new mongoose.Schema({
     type: Number,
     required: false,
   },
-  owner: {
-    type: String, //this might be an ID in the future
+  ownerId: {
+    type: String,
     required: true,
   },
 });
