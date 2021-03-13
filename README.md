@@ -4,7 +4,7 @@ John's test
 
 Liz Line
 
-Lauren's test1 line
+Lauren's edit readme
 
 James' test line
 
