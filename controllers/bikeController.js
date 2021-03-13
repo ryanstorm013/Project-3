@@ -1,3 +1,4 @@
+const { updateOne } = require("../models/bikeModel");
 const Bike = require("../models/bikeModel");
 
 module.exports = {
@@ -11,9 +12,23 @@ module.exports = {
   },
   getOne: async (req, res) => {
     try {
-    } catch (err) {}
+      const oneBike = await Bike.findOne({ _id: req.params.id });
+      res.json(oneBike);
+    } catch (err) {
+      res.send(err);
+    }
   },
-  updateOne: async (req, res) => {},
+  updateOne: async (req, res) => {
+    try {
+      const updateBike = await Bike.updateOne(
+        { _id: req.body.id },
+        { $set: req.body }
+      );
+      res.json(updateBike);
+    } catch (err) {
+      res.send(err);
+    }
+  },
   postOne: async (req, res) => {
     try {
       const newBike = new Bike({
