@@ -14,7 +14,26 @@ module.exports = {
       res.send(err);
     }
   },
-  getOne: async (req, res) => {},
-  updateOne: async (req, res) => {},
+  getOne: async (req, res) => {
+    try {
+      const oneUser = await User.fineOne({ _id: req.params.id});
+      res.json(oneUser);
+    }
+    catch (err) {
+      res.send(err);
+    }
+  },
+  updateOne: async (req, res) => {
+    try {
+      const updateUser = await User.updateOne(
+        { _id: req.body.id },
+        { $set: req.body }
+      );
+      res.json(updateUser);
+    }
+    catch (err) {
+      res.send(err);
+    }
+  },
   deleteOne: async (req, res) => {},
 };
