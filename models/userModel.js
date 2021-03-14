@@ -28,4 +28,6 @@ userSchema.post("findOneAndDelete", async (user) => {
   }
 });
 
-module.exports = User = mongoose.model("user", userSchema);
+const User = mongoose.model("user", userSchema);
+
+module.exports = User;
