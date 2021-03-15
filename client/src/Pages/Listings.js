@@ -98,9 +98,12 @@ const Listings = () => {
           Price
         </button>
         <ul className="dropdown-menu">
-          {bikes.map(bike => (
-            <li><a id = {bike.price} onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">{bike.price}</a></li>
-          ))}
+            <li><a id = "<=5" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$0-5/hr</a></li>
+            <li><a id = "<=10" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$6-10/hr</a></li>
+            <li><a id = "<=15" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$11-15/hr</a></li>
+            <li><a id = "<=20" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$16-20/hr</a></li>
+            <li><a id = "<=25" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$20-25/hr</a></li>
+            <li><a id = ">=26" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$26+/hr</a></li>
         </ul>
     
         <button type="button" className="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={listingsStyles.listingsBtn}>
@@ -116,9 +119,11 @@ const Listings = () => {
           Num. Wheels
         </button>
         <ul className="dropdown-menu">
-          {bikes.map(bike => (
-            <li><a id = {bike.wheels} onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">{bike.wheels}</a></li>
-          ))}
+            <li><a id = "1" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">1</a></li>
+            <li><a id = "2" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">2</a></li>
+            <li><a id = "3" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">3</a></li>
+            <li><a id = "4" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">4</a></li>
+            <li><a id = "5" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">5+</a></li>
         </ul>
 
       </div>
