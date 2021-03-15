@@ -21,8 +21,8 @@ const Listings = () => {
 
   const allBikeData = async function() {
     try {
-      const allBikes = await axios.get("/api/bikes?color=Red");
-      console.log(allBikes.filter())
+      const allBikes = await axios.get("/api/bikes");
+      console.log(allBikes)
       setBikes(allBikes.data)
     } catch (err) {
       console.log(err)
