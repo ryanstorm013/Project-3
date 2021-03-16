@@ -3,32 +3,37 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Listings = () => {
+  const [bikes, setBikes] = useState([]);
+  const [options, setOptions] = useState([]);
+  // const [model, setModel] = useState([]);
 
+  // Data to display
+  useEffect(async () => {
+    optionData();
+    allBikeData();
+    // modelData();
+    // modelFilter();
+  }, []);
 
-  const [options, setOptions] = useState([])
+  const allBikeData = async function () {
+    try {
+      const allBikes = await axios.get("/api/bikes");
+      console.log(allBikes);
+      setBikes(allBikes.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  const optionData = async function() {
-  try {
-    const optionList = await axios.get("/api/bikes");
-    console.log(optionList)
-    setOptions(optionList.data)
-  } catch (err) {
-    console.log(err)
-  }
-  }
-
-  const [model, setModel] = useState([])
-
-  const modelData = async function() {
-  try {
-    const bikeModels = await axios.get("/api/bikes");
-    console.log(bikeModels)
-    setBikes(bikeModels.data)
-  } catch (err) {
-    console.log(err)
-  }
-  }
-
+  const optionData = async function () {
+    try {
+      const optionList = await axios.get("/api/bikes");
+      console.log(optionList);
+      setOptions(optionList.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // Listings Page Styling
   const listingsStyles = {
@@ -39,32 +44,8 @@ const Listings = () => {
     listingsBtn: {
       width: "150px",
       marginLeft: "10px",
-    }
-  }
-
-
-
-  // Get ALL bike data from back end and set state
-  const [bikes, setBikes] = useState([])
-
-  const allBikeData = async function() {
-    try {
-      const allBikes = await axios.get("/api/bikes");
-      console.log(allBikes)
-      setBikes(allBikes.data)
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-    
-  // Data to display
-  useEffect(async () => {
-    optionData();
-    allBikeData()
-    modelData()
-    // modelFilter();
-  }, [])
+    },
+  };
 
   // const reset = {
   //   setBikes([])
@@ -72,138 +53,279 @@ const Listings = () => {
   //   setColor([])
   // }
 
-
   // Functions for filtering bike data
   const handleAll = () => {
-    alert('All Clicked')
-  }
+    alert("All Clicked");
+  };
 
   const handleModel = (e) => {
     let modelSelection = e.target.id;
     console.log(modelSelection);
-    setBikes([]);
-    setModel(modelSelection); 
+    setBikes(modelSelection);
     // const filterModel = true;
     // this.setState({allBikes.
     // })
-  }
+  };
 
   const handleZip = (e) => {
     let zipSelection = e.target.id;
     console.log(zipSelection);
-  }
+  };
 
   const handlePrice = (e) => {
     let priceSelection = e.target.id;
     console.log(priceSelection);
-  }
+  };
 
   const handleColor = (e) => {
     let colorSelection = e.target.id;
     console.log(colorSelection);
-  }
+  };
 
   const handleWheels = (e) => {
     let wheelSelection = e.target.id;
     console.log(wheelSelection);
-  }
-
+  };
 
   return (
-    <div className = 'container'>
+    <div className="container">
       <h1>Listings</h1>
 
       <h3>Filter Listings By:</h3>
 
       <div className="btn-group" style={listingsStyles.btnGroup}>
-        <button onClick={()=> handleAll()} type="button" className="btn btn-outline-danger" style={listingsStyles.listingsBtn}>
+        <button
+          onClick={() => handleAll()}
+          type="button"
+          className="btn btn-outline-danger"
+          style={listingsStyles.listingsBtn}
+        >
           All Bikes
         </button>
-  
-        <button type="button" className="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={listingsStyles.listingsBtn}>
+
+        <button
+          type="button"
+          className="btn btn-outline-danger dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style={listingsStyles.listingsBtn}
+        >
           Models
         </button>
         <ul className="dropdown-menu">
-          {options.map(options => (
-            <li><a id = {options.model} onClick={(e)=> handleModel(e)} className="dropdown-item" href="#">{options.model}</a></li>
+          {options.map((options) => (
+            <li>
+              <a
+                id={options.model}
+                onClick={(e) => handleModel(e)}
+                className="dropdown-item"
+                href="#"
+              >
+                {options.model}
+              </a>
+            </li>
           ))}
         </ul>
-  
-        <button type="button" className="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={listingsStyles.listingsBtn}>
+
+        <button
+          type="button"
+          className="btn btn-outline-danger dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style={listingsStyles.listingsBtn}
+        >
           Location
         </button>
         <ul className="dropdown-menu">
-          {options.map(options => (
-            <li><a id = {options.zip} onClick={(e)=> handleZip(e)} className="dropdown-item" href="#">{options.zip}</a></li>
+          {options.map((options) => (
+            <li>
+              <a
+                id={options.zip}
+                onClick={(e) => handleZip(e)}
+                className="dropdown-item"
+                href="#"
+              >
+                {options.zip}
+              </a>
+            </li>
           ))}
         </ul>
 
-        <button type="button" className="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={listingsStyles.listingsBtn}>
+        <button
+          type="button"
+          className="btn btn-outline-danger dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style={listingsStyles.listingsBtn}
+        >
           Price
         </button>
         <ul className="dropdown-menu">
-            <li><a id = "<=5" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$0-5/hr</a></li>
-            <li><a id = "<=10" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$6-10/hr</a></li>
-            <li><a id = "<=15" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$11-15/hr</a></li>
-            <li><a id = "<=20" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$16-20/hr</a></li>
-            <li><a id = "<=25" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$20-25/hr</a></li>
-            <li><a id = ">=26" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$26+/hr</a></li>
+          <li>
+            <a
+              id="<=5"
+              onClick={(e) => handlePrice(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              $0-5/hr
+            </a>
+          </li>
+          <li>
+            <a
+              id="<=10"
+              onClick={(e) => handlePrice(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              $6-10/hr
+            </a>
+          </li>
+          <li>
+            <a
+              id="<=15"
+              onClick={(e) => handlePrice(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              $11-15/hr
+            </a>
+          </li>
+          <li>
+            <a
+              id="<=20"
+              onClick={(e) => handlePrice(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              $16-20/hr
+            </a>
+          </li>
+          <li>
+            <a
+              id="<=25"
+              onClick={(e) => handlePrice(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              $20-25/hr
+            </a>
+          </li>
+          <li>
+            <a
+              id=">=26"
+              onClick={(e) => handlePrice(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              $26+/hr
+            </a>
+          </li>
         </ul>
-    
-        <button type="button" className="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={listingsStyles.listingsBtn}>
+
+        <button
+          type="button"
+          className="btn btn-outline-danger dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style={listingsStyles.listingsBtn}
+        >
           Color
         </button>
         <ul className="dropdown-menu">
-          {options.map(options => (
-            <li><a id = {options.color} onClick={(e)=> handleColor(e)} className="dropdown-item" href="#">{options.color}</a></li>
+          {options.map((options) => (
+            <li>
+              <a
+                id={options.color}
+                onClick={(e) => handleColor(e)}
+                className="dropdown-item"
+                href="#"
+              >
+                {options.color}
+              </a>
+            </li>
           ))}
         </ul>
-  
-        <button type="button" className="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={listingsStyles.listingsBtn}>
+
+        <button
+          type="button"
+          className="btn btn-outline-danger dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style={listingsStyles.listingsBtn}
+        >
           Num. Wheels
         </button>
         <ul className="dropdown-menu">
-            <li><a id = "1" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">1</a></li>
-            <li><a id = "2" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">2</a></li>
-            <li><a id = "3" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">3</a></li>
-            <li><a id = "4" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">4</a></li>
-            <li><a id = "5" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">5+</a></li>
+          <li>
+            <a
+              id="1"
+              onClick={(e) => handleWheels(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              1
+            </a>
+          </li>
+          <li>
+            <a
+              id="2"
+              onClick={(e) => handleWheels(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              2
+            </a>
+          </li>
+          <li>
+            <a
+              id="3"
+              onClick={(e) => handleWheels(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              3
+            </a>
+          </li>
+          <li>
+            <a
+              id="4"
+              onClick={(e) => handleWheels(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              4
+            </a>
+          </li>
+          <li>
+            <a
+              id="5"
+              onClick={(e) => handleWheels(e)}
+              className="dropdown-item"
+              href="#"
+            >
+              5+
+            </a>
+          </li>
         </ul>
-
       </div>
-      
+
       <div>
-      {model.map(bike => (
-        <div className="card mt-2 mb-2">
-          <div className="card-header">
-            {bike.model}
+        {bikes.map((bike) => (
+          <div className="card mt-2 mb-2">
+            <div className="card-header">{bike.model}</div>
+            <div className="card-body">
+              <p className="card-text">Location: {bike.zip}</p>
+              <p className="card-text">Price: {bike.price}</p>
+              <p className="card-text">Color: {bike.color}</p>
+              <p className="card-text">Num Wheels: {bike.wheels}</p>
+              <a href="#" className="btn btn-outline-primary">
+                Rent Bike!
+              </a>
+            </div>
           </div>
-          <div className="card-body">
-            <p className="card-text">Location: {bike.zip}</p>
-            <p className="card-text">Price: {bike.price}</p>
-            <p className="card-text">Color: {bike.color}</p>
-            <p className="card-text">Num Wheels: {bike.wheels}</p>
-            <a href="#" className="btn btn-outline-primary">Rent Bike!</a>
-          </div>
-        </div>
-        ))}
-
-        {bikes.map(bike => (
-        <div className="card mt-2 mb-2">
-          <div className="card-header">
-            {bike.model}
-          </div>
-          <div className="card-body">
-            <p className="card-text">Location: {bike.zip}</p>
-            <p className="card-text">Price: {bike.price}</p>
-            <p className="card-text">Color: {bike.color}</p>
-            <p className="card-text">Num Wheels: {bike.wheels}</p>
-            <a href="#" className="btn btn-outline-primary">Rent Bike!</a>
-          </div>
-        </div>
         ))}
       </div>
-
     </div>
   );
 };
