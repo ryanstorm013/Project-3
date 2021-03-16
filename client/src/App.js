@@ -2,9 +2,9 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
+import UserContext from "./Context/UserContext";
 import Home from "./Pages/Home";
 import Signup from "./Pages/Signup";
-import Nav from "./Components/Nav/Nav";
 import Login from "./Pages/Login";
 import Account from "./Pages/Account";
 import Listings from "./Pages/Listings";
@@ -13,6 +13,7 @@ import Footer from "./Components/Footer/Footer";
 
 function App() {
   const [bikes, setbikes] = useState({ list: [] });
+  const [userData, setUserData] = useState({ userId: "" });
 
   const getBikes = async function () {
     try {
@@ -24,7 +25,17 @@ function App() {
     }
   };
 
+  const getLoginData = async function () {
+    try {
+      //code to grab userId and replace "FakeUserId"
+      setUserData({ userId: "FakeUserId" });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
+    getLoginData();
     getBikes();
   }, []);
 
@@ -34,14 +45,16 @@ function App() {
         <Link to={"/"}>Home</Link> <Link to={"/signup"}>Signup</Link>{" "}
         <Link to={"/login"}>Login</Link> <Link to={"/account"}>My Account</Link>{" "}
         <Link to={"/listings"}>Listings</Link> <Link to={"/post"}>Post</Link>
-        <Switch>
-          <Route path={"/signup"} component={Signup} />
-          <Route path={"/login"} component={Login} />
-          <Route path={"/account"} component={Account} />
-          <Route path={"/listings"} component={Listings} />
-          <Route path={"/post"} component={Post} />
-          <Route path={"/"} component={Home} />
-        </Switch>
+        <UserContext.Provider value={{ userData, setUserData }}>
+          <Switch>
+            <Route path={"/signup"} component={Signup} />
+            <Route path={"/login"} component={Login} />
+            <Route path={"/account"} component={Account} />
+            <Route path={"/listings"} component={Listings} />
+            <Route path={"/post"} component={Post} />
+            <Route path={"/"} component={Home} />
+          </Switch>
+        </UserContext.Provider>
         <Footer />
       </Router>
     </div>
