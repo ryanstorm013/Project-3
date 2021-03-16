@@ -4,6 +4,32 @@ import axios from "axios";
 
 const Listings = () => {
 
+
+  const [options, setOptions] = useState([])
+
+  const optionData = async function() {
+  try {
+    const optionList = await axios.get("/api/bikes");
+    console.log(optionList)
+    setOptions(optionList.data)
+  } catch (err) {
+    console.log(err)
+  }
+  }
+
+  const [model, setModel] = useState([])
+
+  const modelData = async function() {
+  try {
+    const bikeModels = await axios.get("/api/bikes");
+    console.log(bikeModels)
+    setBikes(bikeModels.data)
+  } catch (err) {
+    console.log(err)
+  }
+  }
+
+
   // Listings Page Styling
   const listingsStyles = {
     btnGroup: {
@@ -16,7 +42,9 @@ const Listings = () => {
     }
   }
 
-  // Get bike data from back end and set state
+
+
+  // Get ALL bike data from back end and set state
   const [bikes, setBikes] = useState([])
 
   const allBikeData = async function() {
@@ -28,11 +56,22 @@ const Listings = () => {
       console.log(err)
     }
   }
+
     
   // Data to display
   useEffect(async () => {
+    optionData();
     allBikeData()
+    modelData()
+    // modelFilter();
   }, [])
+
+  // const reset = {
+  //   setBikes([])
+  //   setModel([])
+  //   setColor([])
+  // }
+
 
   // Functions for filtering bike data
   const handleAll = () => {
@@ -42,6 +81,11 @@ const Listings = () => {
   const handleModel = (e) => {
     let modelSelection = e.target.id;
     console.log(modelSelection);
+    setBikes([]);
+    setModel(modelSelection); 
+    // const filterModel = true;
+    // this.setState({allBikes.
+    // })
   }
 
   const handleZip = (e) => {
@@ -80,8 +124,8 @@ const Listings = () => {
           Models
         </button>
         <ul className="dropdown-menu">
-          {bikes.map(bike => (
-            <li><a id = {bike.model} onClick={(e)=> handleModel(e)} className="dropdown-item" href="#">{bike.model}</a></li>
+          {options.map(options => (
+            <li><a id = {options.model} onClick={(e)=> handleModel(e)} className="dropdown-item" href="#">{options.model}</a></li>
           ))}
         </ul>
   
@@ -89,8 +133,8 @@ const Listings = () => {
           Location
         </button>
         <ul className="dropdown-menu">
-          {bikes.map(bike => (
-            <li><a id = {bike.zip} onClick={(e)=> handleZip(e)} className="dropdown-item" href="#">{bike.zip}</a></li>
+          {options.map(options => (
+            <li><a id = {options.zip} onClick={(e)=> handleZip(e)} className="dropdown-item" href="#">{options.zip}</a></li>
           ))}
         </ul>
 
@@ -98,20 +142,20 @@ const Listings = () => {
           Price
         </button>
         <ul className="dropdown-menu">
-            <li><a id = "<=5" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$0-5/hr</a></li>
-            <li><a id = "<=10" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$6-10/hr</a></li>
-            <li><a id = "<=15" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$11-15/hr</a></li>
-            <li><a id = "<=20" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$16-20/hr</a></li>
-            <li><a id = "<=25" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$20-25/hr</a></li>
-            <li><a id = ">=26" onClick={(e)=> handleWheels(e)} className="dropdown-item" href="#">$26+/hr</a></li>
+            <li><a id = "<=5" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$0-5/hr</a></li>
+            <li><a id = "<=10" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$6-10/hr</a></li>
+            <li><a id = "<=15" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$11-15/hr</a></li>
+            <li><a id = "<=20" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$16-20/hr</a></li>
+            <li><a id = "<=25" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$20-25/hr</a></li>
+            <li><a id = ">=26" onClick={(e)=> handlePrice(e)} className="dropdown-item" href="#">$26+/hr</a></li>
         </ul>
     
         <button type="button" className="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={listingsStyles.listingsBtn}>
           Color
         </button>
         <ul className="dropdown-menu">
-          {bikes.map(bike => (
-            <li><a id = {bike.color} onClick={(e)=> handleColor(e)} className="dropdown-item" href="#">{bike.color}</a></li>
+          {options.map(options => (
+            <li><a id = {options.color} onClick={(e)=> handleColor(e)} className="dropdown-item" href="#">{options.color}</a></li>
           ))}
         </ul>
   
@@ -129,8 +173,7 @@ const Listings = () => {
       </div>
       
       <div>
-        {bikes.map(bike => (
-          // <p>{bike.model}</p>
+      {model.map(bike => (
         <div className="card mt-2 mb-2">
           <div className="card-header">
             {bike.model}
@@ -140,7 +183,22 @@ const Listings = () => {
             <p className="card-text">Price: {bike.price}</p>
             <p className="card-text">Color: {bike.color}</p>
             <p className="card-text">Num Wheels: {bike.wheels}</p>
-            <a href="#" class="btn btn-outline-primary">Rent Bike!</a>
+            <a href="#" className="btn btn-outline-primary">Rent Bike!</a>
+          </div>
+        </div>
+        ))}
+
+        {bikes.map(bike => (
+        <div className="card mt-2 mb-2">
+          <div className="card-header">
+            {bike.model}
+          </div>
+          <div className="card-body">
+            <p className="card-text">Location: {bike.zip}</p>
+            <p className="card-text">Price: {bike.price}</p>
+            <p className="card-text">Color: {bike.color}</p>
+            <p className="card-text">Num Wheels: {bike.wheels}</p>
+            <a href="#" className="btn btn-outline-primary">Rent Bike!</a>
           </div>
         </div>
         ))}

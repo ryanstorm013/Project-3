@@ -20,6 +20,15 @@ let bikeSeed = [
   },
 
   {
+    model: "Colnago C64",
+    zip: 94158,
+    price: 20,
+    color: "Red",
+    wheels: 2,
+    ownerId: "604e381fcf75e14c3c277049",
+  },
+
+  {
     model: "Ventura Comp",
     zip: 94107,
     price: 15,
