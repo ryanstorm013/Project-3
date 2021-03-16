@@ -5,16 +5,14 @@ import axios from "axios";
 const Listings = () => {
   const [bikes, setBikes] = useState([]);
   const [options, setOptions] = useState([]);
-  // const [model, setModel] = useState([]);
 
   // Data to display
   useEffect(async () => {
     optionData();
     allBikeData();
-    // modelData();
-    // modelFilter();
   }, []);
 
+  // api request for all bikes
   const allBikeData = async function () {
     try {
       const allBikes = await axios.get("/api/bikes");
@@ -25,6 +23,7 @@ const Listings = () => {
     }
   };
 
+  // api request for option menu of bikes called useEffect
   const optionData = async function () {
     try {
       const optionList = await axios.get("/api/bikes");
@@ -58,14 +57,24 @@ const Listings = () => {
     alert("All Clicked");
   };
 
-  const handleModel = (e) => {
+  //handling model selection
+  const handleModel = async function (e) {
     let modelSelection = e.target.id;
-    console.log(modelSelection);
-    setBikes(modelSelection);
-    // const filterModel = true;
-    // this.setState({allBikes.
-    // })
+
+    try {
+      const allBikes = await axios.get(`/api/bikes/${modelSelection}`);
+      console.log(allBikes);
+      setBikes(allBikes.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  // (e) => {
+  //   let modelSelection = e.target;
+  //   console.log(modelSelection);
+  //   setBikes(modelSelection);
+  // };
 
   const handleZip = (e) => {
     let zipSelection = e.target.id;
@@ -77,9 +86,16 @@ const Listings = () => {
     console.log(priceSelection);
   };
 
-  const handleColor = (e) => {
-    let colorSelection = e.target.id;
-    console.log(colorSelection);
+  const handleColor = async function (e) {
+    let modelSelection = e.target.id;
+    console.log(modelSelection);
+    try {
+      const allBikes = await axios.get(`/api/bikes/color/${modelSelection}`);
+      console.log(allBikes);
+      setBikes(allBikes.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleWheels = (e) => {

@@ -12,7 +12,17 @@ module.exports = {
   },
   getOne: async (req, res) => {
     try {
-      const oneBike = await Bike.findOne({ _id: req.params.id });
+      //const oneBike = await Bike.findOne({ _id: req.params.id });
+      const oneBike = await Bike.find({ model: req.params.id });
+      res.json(oneBike);
+    } catch (err) {
+      res.send(err);
+    }
+  },
+  getByColor: async (req, res) => {
+    try {
+      //const oneBike = await Bike.findOne({ _id: req.params.id });
+      const oneBike = await Bike.find({ color: req.params.id });
       res.json(oneBike);
     } catch (err) {
       res.send(err);
