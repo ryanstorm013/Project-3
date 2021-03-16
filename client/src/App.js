@@ -9,6 +9,7 @@ import Login from "./Pages/Login";
 import Account from "./Pages/Account";
 import Listings from "./Pages/Listings";
 import Post from "./Pages/Post";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   const [bikes, setbikes] = useState({ list: [] });
@@ -41,6 +42,7 @@ function App() {
           <Route path={"/post"} component={Post} />
           <Route path={"/"} component={Home} />
         </Switch>
+        <Footer />
       </Router>
     </div>
   );
