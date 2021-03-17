@@ -83,7 +83,7 @@ const Post = () => {
               name="wheels"
             />
           </div>
-
+          <hr />
           <button type="submit" className="btn btn-secondary">
             Post My Bike
           </button>
