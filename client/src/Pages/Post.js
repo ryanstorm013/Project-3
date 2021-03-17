@@ -32,15 +32,63 @@ const Post = () => {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={submitPost}>
-        <input onChange={onChange} type="text" name="model" />
-        <input onChange={onChange} type="number" name="zip" />
-        <input onChange={onChange} type="number" name="price" />
-        <input onChange={onChange} type="text" name="color" />
-        <input onChange={onChange} type="number" name="wheels" />
-        <button type="submit">Submit</button>
-      </form>
+    <div style={{ color: "grey" }}>
+      <div className="jumbotron">
+        <h1 className="display-4">Post a new bike:</h1>
+      </div>
+      <div className="container">
+        <form onSubmit={submitPost}>
+          <div className="form-group">
+            <label>Model</label>
+            <input
+              className="form-control"
+              onChange={onChange}
+              type="text"
+              name="model"
+            />
+          </div>
+          <div className="form-group">
+            <label>Zip</label>
+            <input
+              className="form-control"
+              onChange={onChange}
+              type="number"
+              name="zip"
+            />
+          </div>
+          <div className="form-group">
+            <label>Price/h</label>
+            <input
+              className="form-control"
+              onChange={onChange}
+              type="number"
+              name="price"
+            />
+          </div>
+          <div className="form-group">
+            <label>Color</label>
+            <input
+              className="form-control"
+              onChange={onChange}
+              type="text"
+              name="color"
+            />
+          </div>
+          <div className="form-group">
+            <label># of Wheels</label>
+            <input
+              className="form-control"
+              onChange={onChange}
+              type="number"
+              name="wheels"
+            />
+          </div>
+
+          <button type="submit" className="btn btn-secondary">
+            Post My Bike
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
