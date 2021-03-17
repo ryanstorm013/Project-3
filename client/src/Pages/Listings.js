@@ -88,9 +88,51 @@ const Listings = () => {
     }
   };
 
-  const handlePrice = (e) => {
-    let priceSelection = e.target.id;
+  const handlePrice = async function (e) {
+
+    var priceSelection = 0;
     console.log(priceSelection);
+
+    if (e.target.id == '<=5') {
+      priceSelection = 5;
+
+    } else if (e.target.id == '<=10') {
+      priceSelection = 10;
+
+    } else if (e.target.id == '<=15') {
+      priceSelection = 15;
+
+    } else if (e.target.id == '<=20') {
+      priceSelection = 20;
+
+    } else if (e.target.id == '<=25') {
+      priceSelection = 25;
+
+    } else {
+      priceSelection = 1000000;
+
+    }
+    try {
+      const allBikes = await axios.get(`/api/bikes/price/${priceSelection}`);
+      console.log(allBikes);
+      setBikes(allBikes.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+
+  const handleWheels = async function (e) {
+    let wheelSelection = e.target.id;
+    console.log(wheelSelection);
+    try {
+      const allBikes = await axios.get(`/api/bikes/wheels/${wheelSelection}`);
+      console.log(allBikes);
+      setBikes(allBikes.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleColor = async function (e) {
@@ -105,10 +147,6 @@ const Listings = () => {
     }
   };
 
-  const handleWheels = (e) => {
-    let wheelSelection = e.target.id;
-    console.log(wheelSelection);
-  };
 
   return (
     <div className="container">
@@ -120,7 +158,7 @@ const Listings = () => {
         <button
           onClick={() => handleAll()}
           type="button"
-          className="btn btn-outline-danger"
+          className="btn btn-outline-secondary"
           style={listingsStyles.listingsBtn}
         >
           All Bikes
@@ -128,7 +166,7 @@ const Listings = () => {
 
         <button
           type="button"
-          className="btn btn-outline-danger dropdown-toggle"
+          className="btn btn-outline-secondary dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           style={listingsStyles.listingsBtn}
@@ -152,7 +190,7 @@ const Listings = () => {
 
         <button
           type="button"
-          className="btn btn-outline-danger dropdown-toggle"
+          className="btn btn-outline-secondary dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           style={listingsStyles.listingsBtn}
@@ -176,7 +214,7 @@ const Listings = () => {
 
         <button
           type="button"
-          className="btn btn-outline-danger dropdown-toggle"
+          className="btn btn-outline-secondary dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           style={listingsStyles.listingsBtn}
@@ -248,7 +286,7 @@ const Listings = () => {
 
         <button
           type="button"
-          className="btn btn-outline-danger dropdown-toggle"
+          className="btn btn-outline-secondary dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           style={listingsStyles.listingsBtn}
@@ -272,7 +310,7 @@ const Listings = () => {
 
         <button
           type="button"
-          className="btn btn-outline-danger dropdown-toggle"
+          className="btn btn-outline-secondary dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           style={listingsStyles.listingsBtn}

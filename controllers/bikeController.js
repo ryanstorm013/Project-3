@@ -37,6 +37,24 @@ module.exports = {
       res.send(err);
     }
   },
+  getByPrice: async (req, res) => {
+    try {
+      //const oneBike = await Bike.findOne({ _id: req.params.id });
+      const oneBike = await Bike.find({ price: req.params.id });
+      res.json(oneBike);
+    } catch (err) {
+      res.send(err);
+    }
+  },
+  getByWheels: async (req, res) => {
+    try {
+      //const oneBike = await Bike.findOne({ _id: req.params.id });
+      const oneBike = await Bike.find({ wheels: req.params.id });
+      res.json(oneBike);
+    } catch (err) {
+      res.send(err);
+    }
+  },
   updateOne: async (req, res) => {
     try {
       const updateBike = await Bike.updateOne(
