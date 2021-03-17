@@ -46,15 +46,15 @@ const Listings = () => {
     },
   };
 
-  // const reset = {
-  //   setBikes([])
-  //   setModel([])
-  //   setColor([])
-  // }
-
   // Functions for filtering bike data
-  const handleAll = () => {
-    alert("All Clicked");
+  const handleAll = async () => {
+    try {
+      const allBikes = await axios.get("/api/bikes");
+      console.log(allBikes);
+      setBikes(allBikes.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   //handling model selection
@@ -70,12 +70,7 @@ const Listings = () => {
     }
   };
 
-  // (e) => {
-  //   let modelSelection = e.target;
-  //   console.log(modelSelection);
-  //   setBikes(modelSelection);
-  // };
-
+  //handling zip selection
   const handleZip = async function (e) {
     let zipSelection = e.target.id;
     console.log(zipSelection);
@@ -88,29 +83,23 @@ const Listings = () => {
     }
   };
 
+  //handling price selection
   const handlePrice = async function (e) {
-
     var priceSelection = 0;
     console.log(priceSelection);
 
-    if (e.target.id == '<=5') {
+    if (e.target.id == "<=5") {
       priceSelection = 5;
-
-    } else if (e.target.id == '<=10') {
+    } else if (e.target.id == "<=10") {
       priceSelection = 10;
-
-    } else if (e.target.id == '<=15') {
+    } else if (e.target.id == "<=15") {
       priceSelection = 15;
-
-    } else if (e.target.id == '<=20') {
+    } else if (e.target.id == "<=20") {
       priceSelection = 20;
-
-    } else if (e.target.id == '<=25') {
+    } else if (e.target.id == "<=25") {
       priceSelection = 25;
-
     } else {
       priceSelection = 1000000;
-
     }
     try {
       const allBikes = await axios.get(`/api/bikes/price/${priceSelection}`);
@@ -121,8 +110,7 @@ const Listings = () => {
     }
   };
 
-
-
+  //handling wheels selection
   const handleWheels = async function (e) {
     let wheelSelection = e.target.id;
     console.log(wheelSelection);
@@ -135,6 +123,7 @@ const Listings = () => {
     }
   };
 
+  //handling color selection
   const handleColor = async function (e) {
     let colorSelection = e.target.id;
     console.log(colorSelection);
@@ -146,7 +135,6 @@ const Listings = () => {
       console.log(err);
     }
   };
-
 
   return (
     <div className="container">
