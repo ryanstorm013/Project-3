@@ -87,10 +87,10 @@ const Listings = () => {
   };
 
   const handleColor = async function (e) {
-    let modelSelection = e.target.id;
-    console.log(modelSelection);
+    let colorSelection = e.target.id;
+    console.log(colorSelection);
     try {
-      const allBikes = await axios.get(`/api/bikes/color/${modelSelection}`);
+      const allBikes = await axios.get(`/api/bikes/color/${colorSelection}`);
       console.log(allBikes);
       setBikes(allBikes.data);
     } catch (err) {
