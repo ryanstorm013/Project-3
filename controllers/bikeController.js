@@ -28,6 +28,15 @@ module.exports = {
       res.send(err);
     }
   },
+  getByZip: async (req, res) => {
+    try {
+      //const oneBike = await Bike.findOne({ _id: req.params.id });
+      const oneBike = await Bike.find({ zip: req.params.id });
+      res.json(oneBike);
+    } catch (err) {
+      res.send(err);
+    }
+  },
   updateOne: async (req, res) => {
     try {
       const updateBike = await Bike.updateOne(

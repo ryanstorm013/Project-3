@@ -76,9 +76,16 @@ const Listings = () => {
   //   setBikes(modelSelection);
   // };
 
-  const handleZip = (e) => {
+  const handleZip = async function (e) {
     let zipSelection = e.target.id;
     console.log(zipSelection);
+    try {
+      const allBikes = await axios.get(`/api/bikes/zip/${zipSelection}`);
+      console.log(allBikes);
+      setBikes(allBikes.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handlePrice = (e) => {
