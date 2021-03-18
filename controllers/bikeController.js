@@ -40,7 +40,9 @@ module.exports = {
   getByPrice: async (req, res) => {
     try {
       //const oneBike = await Bike.findOne({ _id: req.params.id });
-      const oneBike = await Bike.find({ price: req.params.id });
+      const oneBike = await Bike.find({ 
+        price: {$lte : req.query.minPrice, $gte: req.query.maxPrice}
+      });
       res.json(oneBike);
     } catch (err) {
       res.send(err);

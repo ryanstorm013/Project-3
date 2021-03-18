@@ -85,24 +85,30 @@ const Listings = () => {
 
   //handling price selection
   const handlePrice = async function (e) {
-    var priceSelection = 0;
-    console.log(priceSelection);
+    let minPrice = 0;
+    let maxPrice = 1000000;
 
     if (e.target.id == "<=5") {
-      priceSelection = 5;
+      maxPrice = 5;
+      console.log(`min: ${minPrice}, max: ${maxPrice}`)
     } else if (e.target.id == "<=10") {
-      priceSelection = 10;
+      maxPrice = 10;
+      console.log(`min: ${minPrice}, max: ${maxPrice}`)
     } else if (e.target.id == "<=15") {
-      priceSelection = 15;
+      maxPrice = 15;
+      console.log(`min: ${minPrice}, max: ${maxPrice}`)
     } else if (e.target.id == "<=20") {
-      priceSelection = 20;
+      maxPrice = 20;
+      console.log(`min: ${minPrice}, max: ${maxPrice}`)
     } else if (e.target.id == "<=25") {
-      priceSelection = 25;
+      maxPrice = 25;
+      console.log(`min: ${minPrice}, max: ${maxPrice}`)
     } else {
-      priceSelection = 1000000;
+      maxPrice = 1000000;
+      console.log(`min: ${minPrice}, max: ${maxPrice}`)
     }
     try {
-      const allBikes = await axios.get(`/api/bikes/price/${priceSelection}`);
+      const allBikes = await axios.get(`/api/bikes/price?minPrice=${minPrice}&maxPrice=${maxPrice}`);
       console.log(allBikes);
       setBikes(allBikes.data);
     } catch (err) {
@@ -217,7 +223,7 @@ const Listings = () => {
               className="dropdown-item"
               href="#"
             >
-              $0-5/hr
+              &#60; $5/hr
             </a>
           </li>
           <li>
@@ -227,7 +233,7 @@ const Listings = () => {
               className="dropdown-item"
               href="#"
             >
-              $6-10/hr
+              &#60; $10/hr
             </a>
           </li>
           <li>
@@ -237,7 +243,7 @@ const Listings = () => {
               className="dropdown-item"
               href="#"
             >
-              $11-15/hr
+              &#60; $15/hr
             </a>
           </li>
           <li>
@@ -247,7 +253,7 @@ const Listings = () => {
               className="dropdown-item"
               href="#"
             >
-              $16-20/hr
+              &#60; $20/hr
             </a>
           </li>
           <li>
@@ -257,7 +263,7 @@ const Listings = () => {
               className="dropdown-item"
               href="#"
             >
-              $20-25/hr
+              &#60; $25/hr
             </a>
           </li>
           <li>
@@ -267,7 +273,7 @@ const Listings = () => {
               className="dropdown-item"
               href="#"
             >
-              $26+/hr
+              &#62; $26/hr
             </a>
           </li>
         </ul>
