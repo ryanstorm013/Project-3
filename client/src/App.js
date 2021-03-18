@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import UserContext from "./Context/UserContext";
 import Home from "./Pages/Home";

@@ -3,7 +3,7 @@ import "./style.css";
 
 const Footer = () => {
   return (
-    <div className="card-footer ">
+    <div className="card-footer">
       <p>© 2021 RENT MY RIDE</p>
       <p>
         James Totah, Liz Larkin <br></br> Lauren Hutchinson, Jamly Miller
