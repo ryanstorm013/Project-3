@@ -12,4 +12,8 @@ Ryan's test line
 
 Liz updating again
 
+<<<<<<< HEAD
 JamJam's test line
+=======
+JamJam test line
+>>>>>>> 9aa93a46f0b747a8eab4dbbc79c25da9d0ed6250
