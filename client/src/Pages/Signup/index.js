@@ -2,19 +2,30 @@ import React, { useState } from 'react';
 import Container from "../../Components/Container";
 import Col from "../../Components/Col";
 import Row from "../../Components/Row";
+import axios from "axios";
 
 function Signup() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [DisplayName, setDisplayName] = useState();
 
-
-  const handleSubmit = e => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log("email is" + email);
     console.log("DisplayName is " + DisplayName);
     console.log("password is " + password);
+    
+    try {
+      const userPost = await axios.post("/", {email: "jamjam@gmail.com", password: "jammille", DisplayName: "JamJam",});
+      console.log(userPost);
+      // email: req.body.email,
+      // password: req.body.password,
+      // DisplayName: req.body.DisplayName,
+    } catch (err) {
+    };
   };
+
+
 
   return (
     <div>
