@@ -17,6 +17,7 @@ let bikeSeed = [
     color: "Red",
     wheels: 2,
     ownerId: "604e381fcf75e14c3c277049",
+    rented: false,
   },
 
   {
@@ -26,6 +27,7 @@ let bikeSeed = [
     color: "Red",
     wheels: 2,
     ownerId: "604e381fcf75e14c3c277049",
+    rented: false,
   },
 
   {
@@ -35,6 +37,7 @@ let bikeSeed = [
     color: "Silver",
     wheels: 2,
     ownerId: "604e381fcf75e14c3c27704a",
+    rented: false,
   },
 
   {
@@ -44,6 +47,7 @@ let bikeSeed = [
     color: "White",
     wheels: 2,
     ownerId: "604e381fcf75e14c3c27704b",
+    rented: false,
   },
 
   {
@@ -53,6 +57,7 @@ let bikeSeed = [
     color: "Brown",
     wheels: 3,
     ownerId: "604e381fcf75e14c3c27704c",
+    rented: false,
   },
 
   {
@@ -62,6 +67,7 @@ let bikeSeed = [
     color: "Blue",
     wheels: 4,
     ownerId: "604e381fcf75e14c3c27704d",
+    rented: false,
   },
 
   {
@@ -71,6 +77,7 @@ let bikeSeed = [
     color: "Purple",
     wheels: 2,
     ownerId: "604e381fcf75e14c3c27704e",
+    rented: false,
   },
 
   {
@@ -80,6 +87,7 @@ let bikeSeed = [
     color: "Orange",
     wheels: 2,
     ownerId: "604e381fcf75e14c3c27704f",
+    rented: true,
   },
 
   {
@@ -89,6 +97,7 @@ let bikeSeed = [
     color: "Green",
     wheels: 2,
     ownerId: "604e381fcf75e14c3c277050",
+    rented: false,
   },
 
   {
@@ -98,6 +107,7 @@ let bikeSeed = [
     color: "Black",
     wheels: 2,
     ownerId: "604e381fcf75e14c3c277051",
+    rented: false,
   },
 
   {
@@ -107,6 +117,7 @@ let bikeSeed = [
     color: "Yellow",
     wheels: 2,
     ownerId: "604e381fcf75e14c3c277052",
+    rented: false,
   },
 
   {
@@ -116,6 +127,7 @@ let bikeSeed = [
     color: "Grey",
     wheels: 12,
     ownerId: "604e381fcf75e14c3c277053",
+    rented: true,
   },
 
 ];

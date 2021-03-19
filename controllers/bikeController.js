@@ -4,7 +4,7 @@ const Bike = require("../models/bikeModel");
 module.exports = {
   getAll: async (req, res) => {
     try {
-      const allBikes = await Bike.find({});
+      const allBikes = await Bike.find({rented: false});
       res.json(allBikes);
     } catch (err) {
       res.send(err);
