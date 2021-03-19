@@ -108,7 +108,7 @@ const Listings = () => {
       console.log(`min: ${minPrice}, max: ${maxPrice}`)
     }
     try {
-      const allBikes = await axios.get(`/api/bikes/price?minPrice=${minPrice}&maxPrice=${maxPrice}`);
+      const allBikes = await axios.get(`/api/bikes/price/${maxPrice}`);
       console.log(allBikes);
       setBikes(allBikes.data);
     } catch (err) {

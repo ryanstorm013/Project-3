@@ -7,21 +7,19 @@ import axios from "axios";
 function Signup() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [DisplayName, setDisplayName] = useState();
+  const [displayName, setDisplayName] = useState();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
     console.log("email is" + email);
-    console.log("DisplayName is " + DisplayName);
+    console.log("DisplayName is " + displayName);
     console.log("password is " + password);
     
     try {
-      const userPost = await axios.post("/", {email: "jamjam@gmail.com", password: "jammille", DisplayName: "JamJam",});
+    const userPost = await axios.post("/api/users", {email, password, displayName});
       console.log(userPost);
-      // email: req.body.email,
-      // password: req.body.password,
-      // DisplayName: req.body.DisplayName,
     } catch (err) {
+      console.log(err)
     };
   };
 
@@ -76,10 +74,7 @@ function Signup() {
           </button>
 
         </Container>
-        <Container className="mt-4">
-          <h3>Hello {DisplayName}!</h3>
-          <p>I probably shouldn't tell you this, but your password is {password}!</p>
-        </Container>
+
       </form>
     </div>
   );

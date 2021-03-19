@@ -9,7 +9,11 @@ module.exports = {
         displayName: req.body.displayName,
       });
       const successSave = await userObj.save();
-      res.json(successSave);
+      res.json({
+        email: successSave.email,
+        displayName: successSave.displayName,
+        _id: successSave._id,
+      });
     } catch (err) {
       res.send(err);
     }
