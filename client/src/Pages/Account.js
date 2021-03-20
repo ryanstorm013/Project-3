@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from 'react-bootstrap/ListGroup';
-import Settings from './Account/AccountPages/settings';
+import Settings from './Account/AccountPages/Settings';
 import MyBikes from './Account/AccountPages/myBikes';
 import { Grid, Row, Col, Container } from "react-bootstrap";
 import SideNav from './Account/SideNav';

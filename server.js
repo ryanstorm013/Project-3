@@ -29,6 +29,7 @@ if (process.env.NODE_ENV === "production") {
 // Define API routes here
 app.use("/api/bikes", require("./routes/apiRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/transaction", require("./routes/transactionRoutes"));
 
 // Send every other request to the React app
 // Define any API routes before this runs

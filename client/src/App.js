@@ -28,7 +28,8 @@ function App() {
   const getLoginData = async function () {
     try {
       //code to grab userId and replace "FakeUserId"
-      setUserData({ userId: "FakeUserId" });
+      const user = localStorage.getItem("auth-token")
+      setUserData({ userId: user });
     } catch (err) {
       console.log(err);
     }
