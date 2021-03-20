@@ -26,6 +26,14 @@ module.exports = {
       res.send(err);
     }
   },
+  getOneByEmail: async (req, res) => {
+    try {
+      const oneUser = await User.findOne({ email: req.params.email });
+      res.json(oneUser);
+    } catch (err) {
+      res.send(err);
+    }
+  },
   updateOne: async (req, res) => {
     try {
       const updateUser = await User.updateOne(

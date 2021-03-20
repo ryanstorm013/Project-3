@@ -18,6 +18,7 @@ let bikeSeed = [
     wheels: 2,
     ownerId: "604e381fcf75e14c3c277049",
     rented: false,
+    // renterId: "",
   },
 
   {

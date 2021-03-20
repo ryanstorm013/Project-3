@@ -29,6 +29,9 @@ const bikeSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: false,
+  },
+  renterId: {
+    type: String,
   }
 });
 

@@ -1,10 +1,18 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import UserContext from "../Context/UserContext";
 
 const Listings = () => {
+  const { userData } = useContext(UserContext);
+
   const [bikes, setBikes] = useState([]);
   const [options, setOptions] = useState([]);
+  const [transaction, setTransaction] = useState({
+    ownerId: "",
+    renterId: "",
+    bikeId: "",
+  });
 
   // Data to display
   useEffect(async () => {
@@ -141,6 +149,34 @@ const Listings = () => {
       console.log(err);
     }
   };
+
+  const handleRent = async function (e) {
+
+    const trans = {
+      bikeId: e.target.getAttribute("data-bike"),
+      ownerId: e.target.getAttribute("data-owner"),
+      renterId: userData.userId,
+    };
+    setTransaction(trans);
+
+    try {
+      const newTransaction = await axios.post("/api/transaction", trans);
+      console.log(newTransaction);
+      rentHelper(trans.bikeId);
+    } catch (error) {
+      console.log(error);
+    }
+
+
+  }
+
+  const rentHelper = async function(bikeId) {
+    try {
+      const setRented = await axios.put(`/api/bikes/${bikeId}`, {rented: true})
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="container">
@@ -374,9 +410,9 @@ const Listings = () => {
               <p className="card-text">Price: {bike.price}</p>
               <p className="card-text">Color: {bike.color}</p>
               <p className="card-text">Num Wheels: {bike.wheels}</p>
-              <a href="#" className="btn btn-outline-primary">
+              <button data-bike={bike._id} data-owner={bike.ownerId} onClick={(e) => handleRent(e)} className="btn btn-outline-primary">
                 Rent Bike!
-              </a>
+              </button>
             </div>
           </div>
         ))}
