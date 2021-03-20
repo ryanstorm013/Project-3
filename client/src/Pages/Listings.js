@@ -178,6 +178,9 @@ const Listings = () => {
     }
   }
 
+ 
+
+
   return (
     <div className="container">
       <h1>Listings</h1>
