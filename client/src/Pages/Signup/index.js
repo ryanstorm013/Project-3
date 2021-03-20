@@ -1,29 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Container from "../../Components/Container";
 import Col from "../../Components/Col";
 import Row from "../../Components/Row";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Signup() {
+  const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [displayName, setDisplayName] = useState();
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("email is" + email);
-    console.log("DisplayName is " + displayName);
-    console.log("password is " + password);
-    
+
     try {
-    const userPost = await axios.post("/api/users", {email, password, displayName});
+      const userPost = await axios.post("/api/users", {
+        email,
+        password,
+        displayName,
+      });
       console.log(userPost);
+      localStorage.setItem("auth-token", userPost.data._id);
+      history.push("/");
     } catch (err) {
-      console.log(err)
-    };
+      console.log(err);
+    }
   };
-
-
 
   return (
     <div>
@@ -32,7 +35,6 @@ function Signup() {
       </div>
       <form onSubmit={handleSubmit}>
         <Container className="mt-3 px-5">
-
           <Row className="form-group">
             <Col size="12">
               <input
@@ -40,7 +42,7 @@ function Signup() {
                 type="text"
                 placeholder="email"
                 name="email"
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Col>
           </Row>
@@ -52,7 +54,7 @@ function Signup() {
                 type="password"
                 placeholder="Password"
                 name="password"
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Col>
           </Row>
@@ -64,7 +66,7 @@ function Signup() {
                 type="text"
                 placeholder="Displayname"
                 name="Displayname"
-                onChange={e => setDisplayName(e.target.value)}
+                onChange={(e) => setDisplayName(e.target.value)}
               />
             </Col>
           </Row>
@@ -72,9 +74,7 @@ function Signup() {
           <button className="btn btn-success" type="submit">
             Submit
           </button>
-
         </Container>
-
       </form>
     </div>
   );
