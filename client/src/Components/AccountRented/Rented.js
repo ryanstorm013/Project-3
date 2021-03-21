@@ -8,14 +8,14 @@ const Rented = () => {
     const { userData } = useContext(UserContext);
     const getTransactions = async function() { 
         try {
-            const Transactions = await axios.get( "/api/transaction", { id: userData.userId });
-            console.log(Transactions);
+            const rentedBikes = await axios.get( "/api/transaction", { id: userData.userId });
+            console.log(rentedBikes);
         } catch (err) {
             console.log(err);
         }
     }
 
-useEffect(() => {
+useEffect(async () => {
     getTransactions()
 }, [])
 
@@ -27,7 +27,7 @@ useEffect(() => {
             <ListGroup>
                  <ListGroup.Item>
                             <Card.Title>My Rental History</Card.Title>
-                        </ListGroup.Item>
+                 </ListGroup.Item>
                     <Card.Body> 
                     <ListGroup.Item>
                         

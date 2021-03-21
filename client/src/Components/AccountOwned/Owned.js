@@ -6,16 +6,17 @@ import UserContext from "../../Context/UserContext"
 
 const Owned = () => {
     const { userData } = useContext(UserContext);
+
     const getTransactions = async function() { 
         try {
-            const Transactions = await axios.get( "/api/transaction", { id: userData.userId });
-            console.log(Transactions);
+            const ownedBikes = await axios.get("/api/transaction", { id: userData.userId });
+            console.log(ownedBikes);
         } catch (err) {
             console.log(err);
         }
     }
 
-useEffect(() => {
+useEffect(async () => {
     getTransactions()
 }, [])
 

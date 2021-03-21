@@ -18,6 +18,7 @@ const Account = () => {
   const accountStyles = {
     vertNav: {
       border: "2px solid gray",
+      borderRadius: "12px",
       width: "250px",
       margin: "40px 0px 0px 25px",
       padding: "30px"
@@ -30,6 +31,9 @@ const Account = () => {
     },
     accountHeading: {
       color: "white",
+    },
+    contentSection: {
+      marginTop: "40px",
     }
   }
   
@@ -49,7 +53,7 @@ const Account = () => {
             </div>
           </div>
 
-          <div className="col-md-9">
+          <div className="col-md-9" style={accountStyles.contentSection}>
             <div>
               {components.showRented && <Rented />}
               {components.showSettings && <Settings />}
@@ -65,65 +69,3 @@ const Account = () => {
 }
 
 export default Account
-
-
-// import React from "react";
-// // import Settings from './Account/AccountPages/Settings';
-// import MyBikes from './Account/AccountPages/myBikes';
-// import { Grid, Row, Col, Container } from "react-bootstrap";
-// import SideNav from './Account/SideNav';
-// import Logout from "../Components/AccountLogout/Logout";
-// import Owned from "../Components/AccountOwned/Owned";
-// import Rented from "../Components/AccountRented/Rented";
-// import Settings from "../Components/AccountSettings/Settings";
-// import { useState } from "react";
-
-
-// const Account = () => {
-
-//   const [components, setComponents] = useState({
-//     showLogout: false,
-//     showOwned: false,
-//     showRented: false,
-//     showSettings: false,
-//   })
-
-//   const showComponent = () => {
-//     const componentToShow = showOwned;
-//     setComponents({componentToShow: true})
-//   }
-
-
-
-
-//   return (
-//     <div style={{color: "grey"}}> 
-//       <div className="jumbotron">
-//         <h1>My Account</h1>
-        
-//       </div>
-
-// <Logout />
-// <Owned />
-// <Rented />
-// <Settings />
-
-//       <Container>
-//         <Row>
-//           <Col>
-//             <SideNav/>
-//           </Col>
-//         <Col sm={8}>
-//           <Settings></Settings>
-//         </Col>
-//           <MyBikes></MyBikes>
-//         </Row>
-
-      
-//       </Container>
-//     </div>
-    
-//   );
-// };
-
-// export default Account;
