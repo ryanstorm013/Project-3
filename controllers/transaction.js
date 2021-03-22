@@ -17,5 +17,15 @@ module.exports = {
         } catch (error) {
          res.send(error)   
         }
-    }
+    },
+
+    getAllByID: async (req, res) => {
+        try {
+          // const Transactions = await Transaction.find({ $or: [{ownerId: req.body.id}, {renterId: req.body.id} ] });
+          const FoundTransactions = await Transaction.find( {renterId: req.body.id} );
+          res.json(FoundTransactions);
+        } catch (err) {
+          res.send(err);
+        }
+      },
 }

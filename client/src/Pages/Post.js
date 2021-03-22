@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import UserContext from "../Context/UserContext";
+import { useHistory } from "react-router-dom";
 
 const Post = () => {
   const { userData } = useContext(UserContext);
@@ -12,6 +13,7 @@ const Post = () => {
     wheels: -1,
     ownerId: "",
   });
+  const history = useHistory();
 
   const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,9 +21,12 @@ const Post = () => {
 
   const submitPost = async (e) => {
     e.preventDefault();
+    let path = "/listings";
+
     try {
       const newPost = await axios.post("/api/bikes", form);
       console.log(newPost);
+      history.push(path);
     } catch (err) {
       console.log(err);
     }

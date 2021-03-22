@@ -2,9 +2,11 @@ import React from "react";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import UserContext from "../Context/UserContext";
+import { useHistory } from "react-router-dom";
 
 const Listings = () => {
   const { userData } = useContext(UserContext);
+  const history = useHistory();
 
   const [bikes, setBikes] = useState([]);
   const [options, setOptions] = useState([]);
@@ -98,22 +100,22 @@ const Listings = () => {
 
     if (e.target.id == "<=5") {
       maxPrice = 5;
-      console.log(`min: ${minPrice}, max: ${maxPrice}`)
+      console.log(`min: ${minPrice}, max: ${maxPrice}`);
     } else if (e.target.id == "<=10") {
       maxPrice = 10;
-      console.log(`min: ${minPrice}, max: ${maxPrice}`)
+      console.log(`min: ${minPrice}, max: ${maxPrice}`);
     } else if (e.target.id == "<=15") {
       maxPrice = 15;
-      console.log(`min: ${minPrice}, max: ${maxPrice}`)
+      console.log(`min: ${minPrice}, max: ${maxPrice}`);
     } else if (e.target.id == "<=20") {
       maxPrice = 20;
-      console.log(`min: ${minPrice}, max: ${maxPrice}`)
+      console.log(`min: ${minPrice}, max: ${maxPrice}`);
     } else if (e.target.id == "<=25") {
       maxPrice = 25;
-      console.log(`min: ${minPrice}, max: ${maxPrice}`)
+      console.log(`min: ${minPrice}, max: ${maxPrice}`);
     } else {
       maxPrice = 1000000;
-      console.log(`min: ${minPrice}, max: ${maxPrice}`)
+      console.log(`min: ${minPrice}, max: ${maxPrice}`);
     }
     try {
       const allBikes = await axios.get(`/api/bikes/price/${maxPrice}`);
@@ -151,6 +153,7 @@ const Listings = () => {
   };
 
   const handleRent = async function (e) {
+    let path = "/account";
 
     const trans = {
       bikeId: e.target.getAttribute("data-bike"),
@@ -163,20 +166,21 @@ const Listings = () => {
       const newTransaction = await axios.post("/api/transaction", trans);
       console.log(newTransaction);
       rentHelper(trans.bikeId);
+      history.push(path);
     } catch (error) {
       console.log(error);
     }
+  };
 
-
-  }
-
-  const rentHelper = async function(bikeId) {
+  const rentHelper = async function (bikeId) {
     try {
-      const setRented = await axios.put(`/api/bikes/${bikeId}`, {rented: true})
+      const setRented = await axios.put(`/api/bikes/${bikeId}`, {
+        rented: true,
+      });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div className="container">
@@ -410,7 +414,12 @@ const Listings = () => {
               <p className="card-text">Price: {bike.price}</p>
               <p className="card-text">Color: {bike.color}</p>
               <p className="card-text">Num Wheels: {bike.wheels}</p>
-              <button data-bike={bike._id} data-owner={bike.ownerId} onClick={(e) => handleRent(e)} className="btn btn-outline-primary">
+              <button
+                data-bike={bike._id}
+                data-owner={bike.ownerId}
+                onClick={(e) => handleRent(e)}
+                className="btn btn-outline-primary"
+              >
                 Rent Bike!
               </button>
             </div>
