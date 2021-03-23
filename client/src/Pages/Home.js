@@ -10,7 +10,7 @@ const Home = () => {
     let path;
     try {
       const loggedIn = localStorage.getItem("auth-token");
-      if (loggedIn === userData.userId) {
+      if (loggedIn === userData.userId && loggedIn !== "") {
         path = "/listings";
       } else {
         path = "/signup";
