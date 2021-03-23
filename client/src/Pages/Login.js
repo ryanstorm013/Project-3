@@ -5,6 +5,7 @@ import Col from "../Components/Col";
 import Row from "../Components/Row";
 import axios from "axios";
 import UserContext from "../Context/UserContext";
+import "./login.css";
 
 import "../Pages/login.css";
 
@@ -30,7 +31,19 @@ const Login = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2
+          style={{
+            color: "white",
+            margin: "auto",
+            paddingBottom: "40px",
+            textAlign: "center",
+            fontSize: "62px",
+            opacity: ".5",
+          }}
+        >
+          Login
+        </h2>
         <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">

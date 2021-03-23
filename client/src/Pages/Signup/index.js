@@ -31,10 +31,22 @@ function Signup() {
 
   return (
     <div>
-      <div style={{ color: "white" }} className="mt-4">
+      {/* <div style={{ color: "white" }} className="mt-4">
         <h2>Sign Up</h2>
-      </div>
+      </div> */}
       <form className="sign-up-form" onSubmit={handleSubmit}>
+        <h2
+          style={{
+            color: "white",
+            margin: "auto",
+            paddingBottom: "40px",
+            textAlign: "center",
+            fontSize: "62px",
+            opacity: ".5",
+          }}
+        >
+          Sign Up
+        </h2>
         <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">
