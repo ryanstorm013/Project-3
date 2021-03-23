@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 const Bike = require("./bikeModel");
 
 const userSchema = new mongoose.Schema({
@@ -29,5 +30,9 @@ userSchema.post("findOneAndDelete", async (user) => {
 });
 
 const User = mongoose.model("user", userSchema);
+
+User.prototype.validPassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
 module.exports = User;

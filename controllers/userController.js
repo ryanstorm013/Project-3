@@ -1,11 +1,12 @@
 const User = require("../models/userModel");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
   newUser: async (req, res) => {
     try {
       const userObj = new User({
         email: req.body.email,
-        password: req.body.password,
+        password: bcrypt.hashSync(req.body.password),
         displayName: req.body.displayName,
       });
       const successSave = await userObj.save();

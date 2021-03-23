@@ -6,6 +6,7 @@ import Row from "../Components/Row";
 import axios from "axios";
 import UserContext from "../Context/UserContext";
 import "./login.css";
+import bcrypt from "bcryptjs"
 
 import "../Pages/login.css";
 
@@ -19,7 +20,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const user = await axios.get(`/api/users/email/${email}`);
-      if (password === user.data.password) {
+      if (bcrypt.compareSync(password, user.data.password)) {
         localStorage.setItem("auth-token", user.data._id);
         setUserData({ userId: user.data._id });
         history.push("/");
