@@ -22,7 +22,6 @@ function Signup() {
         password,
         displayName,
       });
-      console.log(userPost);
       localStorage.setItem("auth-token", userPost.data._id);
       history.push("/");
     } catch (err) {
