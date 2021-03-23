@@ -7,40 +7,39 @@ import Button from "react-bootstrap/button";
 const Settings = () => {
     return (
         <div>
-            
             <div>
-            <Card style={{ width: '50rem', height: '20%'}}>
-            <ListGroup>
-                 <ListGroup.Item>
+                <Card style={{ width: '50rem', height: '20%' }}>
+                    <ListGroup>
+                        <ListGroup.Item>
                             <Card.Title>Account Settings</Card.Title>
                         </ListGroup.Item>
-                    <Card.Body> 
-                    <ListGroup.Item>
-                        <Form>
-                            <Form.Label>
-                                Username:
+                        <Card.Body>
+                            <ListGroup.Item>
+                                <Form>
+                                    <Form.Label>
+                                        Username:
                             </Form.Label>
-                                <Form.Control type="username" placeholder="Change Username"/>
-                                <Button variant="dark">Submit</Button>
-                        </Form>
-                        <Form>
-                        <Form.Label>
-                                Password:
+                                    <Form.Control type="username" placeholder="Change Username" />
+                                    <Button variant="dark">Submit</Button>
+                                </Form>
+                                <Form>
+                                    <Form.Label>
+                                        Password:
                             </Form.Label>
-                                <Form.Control type="password" placeholder="Old Password"/>
-                                <br></br>
-                                <Form.Control type="password" placeholder="New Password"/>
-                                <br></br>
-                                <Form.Control type="password" placeholder="Retype Password"/>
-                                <Button variant="dark">Submit</Button>
-                        </Form>
+                                    <Form.Control type="password" placeholder="Old Password" />
+                                    <br></br>
+                                    <Form.Control type="password" placeholder="New Password" />
+                                    <br></br>
+                                    <Form.Control type="password" placeholder="Retype Password" />
+                                    <Button variant="dark">Submit</Button>
+                                </Form>
 
-                    </ListGroup.Item>
+                            </ListGroup.Item>
 
-                </Card.Body>
-            </ListGroup>
-            </Card>
-        </div>
+                        </Card.Body>
+                    </ListGroup>
+                </Card>
+            </div>
         </div>
     )
 }
