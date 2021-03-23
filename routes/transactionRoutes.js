@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
-const {newTransaction, getAllByID} = require("../controllers/transaction");
+const { newTransaction, getAllByID } = require("../controllers/transaction");
 
 router.post("/", newTransaction);
 
-router.get("/", getAllByID);
+router.get("/:id", getAllByID);
 
 module.exports = router;
