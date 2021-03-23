@@ -4,6 +4,7 @@ import Col from "../../Components/Col";
 import Row from "../../Components/Row";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import "./signup.css";
 
 function Signup() {
   const history = useHistory();
@@ -30,10 +31,10 @@ function Signup() {
 
   return (
     <div>
-      <div className="mt-4">
+      <div style={{ color: "white" }} className="mt-4">
         <h2>Sign Up</h2>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form className="sign-up-form" onSubmit={handleSubmit}>
         <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">
