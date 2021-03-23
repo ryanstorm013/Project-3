@@ -16,8 +16,20 @@ const Listings = () => {
     bikeId: "",
   });
 
+  const checkLogin = function () {
+    try {
+      const login = localStorage.getItem("auth-token");
+      if (login === "" || login !== userData.userId) {
+        history.push("/login")
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   // Data to display
   useEffect(async () => {
+    checkLogin();
     optionData();
     allBikeData();
   }, []);

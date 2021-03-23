@@ -15,6 +15,17 @@ const Post = () => {
   });
   const history = useHistory();
 
+  const checkLogin = function () {
+    try {
+      const login = localStorage.getItem("auth-token");
+      if (login === "" || login !== userData.userId) {
+        history.push("/login")
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -33,6 +44,7 @@ const Post = () => {
   };
 
   useEffect(() => {
+    checkLogin();
     setForm({ ...form, ownerId: userData.userId });
   }, []);
 
