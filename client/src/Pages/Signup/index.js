@@ -40,7 +40,7 @@ function Signup() {
               <input
                 className="form-control"
                 type="text"
-                placeholder="email"
+                placeholder="Email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -64,7 +64,7 @@ function Signup() {
               <input
                 className="form-control"
                 type="text"
-                placeholder="Displayname"
+                placeholder="Username"
                 name="Displayname"
                 onChange={(e) => setDisplayName(e.target.value)}
               />

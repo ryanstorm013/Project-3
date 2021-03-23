@@ -4,12 +4,12 @@ import Container from "../Components/Container";
 import Col from "../Components/Col";
 import Row from "../Components/Row";
 import axios from "axios";
-import UserContext from "../Context/UserContext"
+import UserContext from "../Context/UserContext";
 
 import "../Pages/login.css";
 
 const Login = () => {
-  const { setUserData } = useContext(UserContext)
+  const { setUserData } = useContext(UserContext);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const history = useHistory();
@@ -23,7 +23,6 @@ const Login = () => {
         setUserData({ userId: user.data._id });
         history.push("/");
       }
-
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +37,7 @@ const Login = () => {
               <input
                 className="form-control"
                 type="text"
-                placeholder="email"
+                placeholder="Email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
