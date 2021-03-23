@@ -21,7 +21,7 @@ const Login = () => {
       if (password === user.data.password) {
         localStorage.setItem("auth-token", user.data._id);
         setUserData({ userId: user.data._id });
-        history.push("/listings");
+        history.push("/");
       }
 
     } catch (error) {

@@ -79,14 +79,27 @@ const Post = () => {
               name="color"
             />
           </div>
+
           <div className="form-group">
             <label># of Wheels</label>
-            <input
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <label className="input-group-text" for="inputGroupSelect01"># of Wheels</label>
+              </div>
+              <select className="custom-select form-control" id="inputGroupSelect01" onChange={onChange} name="wheels">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                <option value="4">Four</option>
+              </select>
+            </div>
+            {/* <input
               className="form-control"
               onChange={onChange}
               type="number"
               name="wheels"
-            />
+            /> */}
           </div>
           <hr />
           <button type="submit" className="btn btn-secondary">
