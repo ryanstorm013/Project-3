@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "../Pages/home.css";
-
+import UserContext from "../Context/UserContext";
 const Home = () => {
   const history = useHistory();
+  const { userData } = useContext(UserContext);
 
   const handleRentClick = () => {
-    let path = "/signup";
+    let path;
+    try {
+      const loggedIn = localStorage.getItem("auth-token");
+      if (loggedIn === userData.userId) {
+        path = "/listings";
+      } else {
+        path = "/signup";
+      }
+    } catch (err) {
+      console.log(err)
+    }
     history.push(path);
   };
 
