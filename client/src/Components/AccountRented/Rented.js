@@ -32,6 +32,26 @@ const Rented = () => {
     }
   }
 
+  const handleReturn = async function (e) {
+    try {
+      const bikeAttributes = e.target.getAttribute("data-bike")
+      console.log(bikeAttributes)
+      rentHelper();
+    } catch (err) {
+      console.log(err)
+    }
+  };
+
+  const rentHelper = async function (bikeId) {
+    try {
+      const setRented = await axios.put(`/api/bikes/${bikeId}`, {
+        rented: false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(async () => {
     getTransactions();
     getBikes();
@@ -47,6 +67,14 @@ const Rented = () => {
             <p className="card-text">Price: {bike.price}</p>
             <p className="card-text">Color: {bike.color}</p>
             <p className="card-text">Num Wheels: {bike.wheels}</p>
+            <button
+                data-bike={bike._id}
+                data-owner={bike.ownerId}
+                onClick={(e) => handleReturn(e)}
+                className="btn btn-outline-primary"
+              >
+                Return Bike!
+              </button>
           </div>
         </div>
       ))}
