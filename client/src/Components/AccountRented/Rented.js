@@ -9,7 +9,6 @@ const Rented = () => {
 
   const [rented, setRented] = useState([]);
   const [bikes, setBikes] = useState([]);
-  //   const [bikes, setBikes] = useState([]);
 
   const getTransactions = async function () {
     try {
@@ -37,19 +36,6 @@ const Rented = () => {
     getTransactions();
     getBikes();
   }, [rented.length]);
-
-  // api request for all bikes
-  // const allBikeData = async function () {
-  //     let rentId = rented.renterId;
-  //     console.log(rentId);
-  //     try {
-  //         const allBikes = await axios.get(`/api/bikes/${rentId}`);
-  //         console.log(allBikes);
-  //         setBikes(allBikes.data);
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  // };
 
   return (
     <div>

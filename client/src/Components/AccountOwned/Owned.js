@@ -12,7 +12,6 @@ const Owned = () => {
   const getTransactions = async function () {
     try {
       const transactions = await axios.get(`/api/transaction/owned/${userData.userId}`);
-      // console.log(transactions);
       setOwned(transactions.data);
     } catch (err) {
       console.log(err);
@@ -20,13 +19,9 @@ const Owned = () => {
   };
 
   const getBikes = async function () {
-    console.log("GetBikes");
     try {
       let tempBikes = [];
-      console.log("Inside Try");
-      console.log(owned.length);
       for (let i = 0; i < owned.length; i++) {
-        console.log("Inside For");
         const bike = await axios.get(`/api/bikes/id/${owned[i].bikeId}`);
         tempBikes.push(bike.data[0]);
       }
