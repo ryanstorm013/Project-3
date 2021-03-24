@@ -21,12 +21,12 @@ const Listings = () => {
     try {
       const login = localStorage.getItem("auth-token");
       if (login === "" || login !== userData.userId) {
-        history.push("/login")
+        history.push("/login");
       }
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   // Data to display
   useEffect(async () => {

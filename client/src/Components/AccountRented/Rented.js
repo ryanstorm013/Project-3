@@ -9,10 +9,13 @@ const Rented = () => {
 
   const [rented, setRented] = useState([]);
   const [bikes, setBikes] = useState([]);
+  const [checkRented, setCheckRented] = useState(false);
 
   const getTransactions = async function () {
     try {
-      const transactions = await axios.get(`/api/transaction/rented/${userData.userId}`);
+      const transactions = await axios.get(
+        `/api/transaction/rented/${userData.userId}`
+      );
       setRented(transactions.data);
     } catch (err) {
       console.log(err);
@@ -28,18 +31,18 @@ const Rented = () => {
       }
       setBikes(tempBikes);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const handleReturn = async function (e) {
-    const bikeAttributes = e.target.getAttribute("data-bike")
-    console.log(bikeAttributes)
+    const bikeAttributes = e.target.getAttribute("data-bike");
+    console.log(bikeAttributes);
     try {
       rentHelper(bikeAttributes);
-
+      setCheckRented(true);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -69,13 +72,16 @@ const Rented = () => {
             <p className="card-text">Color: {bike.color}</p>
             <p className="card-text">Num Wheels: {bike.wheels}</p>
             <button
-                data-bike={bike._id}
-                data-owner={bike.ownerId}
-                onClick={(e) => handleReturn(e)}
-                className="btn btn-outline-primary"
-              >
-                Return Bike!
-              </button>
+              data-bike={bike._id}
+              data-owner={bike.ownerId}
+              onClick={(e) => handleReturn(e)}
+              className="btn btn-outline-primary"
+            >
+              Return Bike!
+            </button>
+            {checkRented && (
+              <p style={{ textAlign: "center" }}>Bike Returned</p>
+            )}
           </div>
         </div>
       ))}
