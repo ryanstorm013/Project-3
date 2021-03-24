@@ -13,11 +13,16 @@ const Account = () => {
   const { userData } = useContext(UserContext);
 
   const [components, setComponents] = useState({
+    showRented: false,
     showLogout: false,
     showOwned: false,
-    showRented: false,
     showSettings: false,
   })
+
+  const onLoad = function() {
+    setComponents({showRented: true})
+  }
+
 
   const checkLogin = function () {
     try {
@@ -53,6 +58,7 @@ const Account = () => {
   }
 
   useEffect(async () => {
+    onLoad();
     checkLogin();
   }, [])
 
