@@ -1,65 +1,78 @@
 import React from "react";
 import "./styles.css";
-import {Navbar, Nav} from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Footer from "../Footer/Footer"; 
+import Footer from "../Footer/Footer";
 
 const Navi = (props) => {
-  return( 
+  return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          
-          <a className="navbar-brand" href="/">
-            {/* <Link to={"/"} style={{ textDecoration: 'none' }}>Home</Link>  */}
-            Home
-          </a>
-        {/* <div  className="collapse navbar-collapse"> */}
-        
+        <Link className="navbar-brand" to="/">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          {/* <Link to={"/"} style={{ textDecoration: 'none' }}>Home</Link>  */}
+          Home
+        </Link>
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a className="nav-link " href="/listings">
+            <li className="nav-item">
+              <Link className="nav-link " to="/listings">
                 Listings
-              </a>
+              </Link>
             </li>
           </ul>
-          
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <a className="nav-link " href="/signup">
-                Sign Up
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link " href="/login">
-                Login
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link " href="/post">
-                Post
-              </a>
-            </li>
+
+          <ul className="navbar-nav ml-auto ">
+            <Link className="nav-link" to="/signup">
+              Sign up
+            </Link>
+            <Link className="nav-link" to="/login">
+              Login in
+            </Link>
+            <Link className="nav-link" to="/post">
+              Post
+            </Link>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="/account" id="navbarDropdown">
+              <Link
+                className="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                to="/account"
+              >
                 My Account
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="/account">Settings</a>
-                <a class="dropdown-item" href="/account">Rented</a>
-                <a class="dropdown-item" href="/account">Owned</a>
-                <a class="dropdown-item" href="/account">Log Out</a>
+              </Link>
+              <div className="dropdown-menu">
+                <Link className="dropdown-item" to="/account">
+                  Settings
+                </Link>
+                <Link className="dropdown-item" to="/account">
+                  Rented
+                </Link>
+                <Link className="dropdown-item" to="/account">
+                  Owned
+                </Link>
+                <Link className="dropdown-item" to="/account">
+                  Log Out
+                </Link>
               </div>
             </li>
-          </ul>  
-          
-        {/* </div> */}
-          
-        
-        
+          </ul>
+        </div>
+
         {/* <Link to={"/listings"}>Listings</Link> 
         <Link to={"/post"}>Post</Link>  */}
       </nav>
-    </div>);
+    </div>
+  );
 };
 
 export default Navi;
