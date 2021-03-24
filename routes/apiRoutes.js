@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const {
   getAll,
+  getOneById,
   postOne,
   getOne,
   getByColor,
@@ -13,6 +14,7 @@ const {
 
 router.get("/", getAll);
 router.get("/:id", getOne);
+router.get("/id/:id", getOneById);
 router.get("/color/:id", getByColor);
 router.get("/zip/:id", getByZip);
 router.get("/price/:maxPrice", getByPrice);
