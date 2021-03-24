@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import "./Pages/home.css";
 import UserContext from "../Context/UserContext";
+import "./home.css";
+
+
 const Home = () => {
   const history = useHistory();
   const { userData } = useContext(UserContext);
