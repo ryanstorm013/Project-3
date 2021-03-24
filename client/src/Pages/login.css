@@ -1,5 +1,6 @@
 body {
-  background-image: url("./bike_street_night_wall-634607.jpg");
+  /* background-image: url("./bike_street_night_wall-634607.jpg");
+  background-size: cover; */
 }
 
 .card-footer {
@@ -13,6 +14,8 @@ body {
   border-top: none;
   margin-top: 75px;
   width: 100%;
+  color: white;
+  font-weight: bold;
 }
 
 #loginbtn {
@@ -25,13 +28,19 @@ body {
   width: 50%;
 }
 
+<<<<<<< HEAD
 
 .login-form{
   width: 500px; 
   margin-left: 10%;
+=======
+.login-form {
+  width: 1000px;
+  margin: 0 auto;
+>>>>>>> c347040312f7a59ac4e41fb99f4ac5b06d04d347
   padding-top: 70px;
 }
 
-.form-control{
-margin: 10px;
+.form-control {
+  margin: 10px;
 }
