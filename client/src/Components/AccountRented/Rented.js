@@ -33,18 +33,20 @@ const Rented = () => {
   }
 
   const handleReturn = async function (e) {
+    const bikeAttributes = e.target.getAttribute("data-bike")
+    console.log(bikeAttributes)
+    setReturnBike(bikeAttributes)
     try {
-      const bikeAttributes = e.target.getAttribute("data-bike")
-      console.log(bikeAttributes)
-      rentHelper();
+      rentHelper(bikeAttributes);
+
     } catch (err) {
       console.log(err)
     }
   };
 
-  const rentHelper = async function (bikeId) {
+  const rentHelper = async function (returnBike) {
     try {
-      const setRented = await axios.put(`/api/bikes/${bikeId}`, {
+      const setRented = await axios.put(`/api/bikes/${returnBike}`, {
         rented: false,
       });
     } catch (error) {
