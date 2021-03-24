@@ -1,9 +1,36 @@
+body {
+  background-image: url("./bike_street_night_wall-634607.jpg");
+}
+
+#card-footer {
+  background-color: #0dad4b;
+  color: white;
+  text-align: center;
+  height: 100vh;
+  border-top: none;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #196887;
+  border-color: #198787;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+.mt-3 {
+  margin: 8%;
+  width: 50%;
+  padding: 10%;
+}
+
 .login-form{
-  width: 500px; 
-  margin:0 auto;
+width: 500px; 
+margin:0 auto;
 padding-top: 100px;
 }
 
 .form-control{
-  margin: 10px;
+margin: 10px;
 }

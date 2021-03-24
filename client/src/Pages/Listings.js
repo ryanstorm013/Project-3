@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import UserContext from "../Context/UserContext";
 import { useHistory } from "react-router-dom";
+import "./listing.css";
 
 const Listings = () => {
   const { userData } = useContext(UserContext);

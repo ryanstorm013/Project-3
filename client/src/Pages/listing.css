@@ -1,0 +1,26 @@
+h1 {
+    color: beige;
+    margin-left: 20%;
+    margin-top: 2%;
+}
+
+h3 {
+    color: beige;
+    margin-left: 20%;
+    margin-top: 2%;
+}
+
+#FilterBtn {
+    background-color: #196887;
+    border-color: #198787;
+    color: beige;
+    font-size: 15px;
+}
+
+.card {
+    width: 79%;
+}
+
+.card-header {
+    background-color: rgb(101, 168, 170);
+}
