@@ -33,18 +33,19 @@ const Login = () => {
   return (
     <div>
       <form className="login-form" onSubmit={handleSubmit}>
-        <h2
+      <h2
           style={{
             color: "white",
             margin: "auto",
-            paddingBottom: "40px",
-            textAlign: "center",
+            paddingBottom: "10px",
             fontSize: "62px",
             opacity: ".5",
+            marginLeft: "35%"
           }}
         >
           Login
         </h2>
+
         <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">
@@ -57,6 +58,7 @@ const Login = () => {
               />
             </Col>
           </Row>
+          <br></br>
 
           <Row className="form-group">
             <Col size="12">
@@ -69,8 +71,9 @@ const Login = () => {
               />
             </Col>
           </Row>
+          <br></br>
 
-          <button className="btn btn-success" type="submit">
+          <button className="btn btn-success" id="loginbtn" type="submit">
             Submit
           </button>
         </Container>
