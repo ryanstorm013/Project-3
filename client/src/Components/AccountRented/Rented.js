@@ -35,7 +35,6 @@ const Rented = () => {
   const handleReturn = async function (e) {
     const bikeAttributes = e.target.getAttribute("data-bike")
     console.log(bikeAttributes)
-    setReturnBike(bikeAttributes)
     try {
       rentHelper(bikeAttributes);
 
