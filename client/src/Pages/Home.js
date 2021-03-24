@@ -24,7 +24,17 @@ const Home = () => {
   };
 
   const handleReturnClick = () => {
-    let path = "/login";
+    let path;
+    try {
+      const loggedIn = localStorage.getItem("auth-token");
+      if (loggedIn === userData.userId && loggedIn !== "") {
+        path = "/account";
+      } else {
+        path = "/signup";
+      }
+    } catch (err) {
+      console.log(err)
+    }
     history.push(path);
   };
 
