@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Container from "../../Components/Container";
 import Col from "../../Components/Col";
 import Row from "../../Components/Row";
@@ -6,12 +6,14 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import bcrypt from "bcryptjs"
 import "./signup.css";
+import UserContext from "../../Context/UserContext";
 
 function Signup() {
   const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [displayName, setDisplayName] = useState();
+  const { setUserData } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +25,7 @@ function Signup() {
         displayName,
       });
       localStorage.setItem("auth-token", userPost.data._id);
+      setUserData({ userId: userPost.data._id })
       history.push("/");
     } catch (err) {
       console.log(err);
