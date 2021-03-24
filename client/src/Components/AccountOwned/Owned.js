@@ -7,29 +7,48 @@ import UserContext from "../../Context/UserContext";
 const Owned = () => {
   const { userData } = useContext(UserContext);
   const [owned, setOwned] = useState([]);
+  const [bikes, setBikes] = useState([]);
 
   const getTransactions = async function () {
     try {
-      const ownedBikes = await axios.get(`/api/transaction/${userData.userId}`);
-      console.log(ownedBikes);
-      setOwned(ownedBikes.data);
+      const transactions = await axios.get(`/api/transaction/owned/${userData.userId}`);
+      // console.log(transactions);
+      setOwned(transactions.data);
     } catch (err) {
       console.log(err);
     }
   };
 
+  const getBikes = async function () {
+    console.log("GetBikes");
+    try {
+      let tempBikes = [];
+      console.log("Inside Try");
+      console.log(owned.length);
+      for (let i = 0; i < owned.length; i++) {
+        console.log("Inside For");
+        const bike = await axios.get(`/api/bikes/id/${owned[i].bikeId}`);
+        tempBikes.push(bike.data[0]);
+      }
+      setBikes(tempBikes);
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   useEffect(async () => {
     getTransactions();
-  }, []);
+    getBikes();
+  }, [owned.length]);
 
   return (
     <div>
-      {owned.map((bike, index) => (
+      {bikes.map((bike, index) => (
         <div key={index} className="card mt-2 mb-2">
-          <div className="card-header">{bike.ownerId}</div>
+          <div className="card-header">{bike.model}</div>
           <div className="card-body">
-            <p className="card-text">Location: {bike.bikeId}</p>
-            <p className="card-text">Price: {bike.renterId}</p>
+            <p className="card-text">Location: {bike.zip}</p>
+            <p className="card-text">Price: {bike.price}</p>
             <p className="card-text">Color: {bike.color}</p>
             <p className="card-text">Num Wheels: {bike.wheels}</p>
           </div>
