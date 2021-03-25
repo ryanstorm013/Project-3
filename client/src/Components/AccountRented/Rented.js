@@ -3,13 +3,6 @@ import axios from "axios";
 import UserContext from "../../Context/UserContext";
 
 const Rented = () => {
-
-  const rentedStyles = {
-    card: {
-      width: "600px",
-    }
-  }
-
   const { userData } = useContext(UserContext);
 
   const [rented, setRented] = useState([]);

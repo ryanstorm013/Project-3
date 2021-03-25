@@ -196,22 +196,28 @@ const Listings = () => {
   };
 
   return (
-    <>
-    <div className="parallax text-center">
-    <p id="text-jumbo">Listings</p>
-  </div>
     <div className="container" id="listingContainer">
+      <h2
+        style={{
+          color: "white",
+          paddingBottom: "10px",
+          fontSize: "62px",
+          opacity: ".5",
+          marginLeft: "50%",
+        }}
+      >
+        Listings
+        </h2>
 
-
-        <h3
-          style={{
-            color: "white",
-            margin: "auto",
-            paddingBottom: "5px",
-            fontSize: "36px",
-            opacity: ".5",
-            marginLeft: "50%",
-          }}
+      <h3
+        style={{
+          color: "white",
+          margin: "auto",
+          paddingBottom: "5px",
+          fontSize: "36px",
+          opacity: ".5",
+          marginLeft: "50%",
+        }}
       >
         Filter Listings By</h3>
 
@@ -454,7 +460,6 @@ const Listings = () => {
         ))}
       </div>
     </div>
-    </>
   );
 };
 

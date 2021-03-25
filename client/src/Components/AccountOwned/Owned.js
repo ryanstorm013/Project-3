@@ -4,12 +4,6 @@ import UserContext from "../../Context/UserContext";
 
 const Owned = () => {
 
-  const ownedStyles = {
-    card: {
-      width: "600px",
-    }
-  }
-
   const { userData } = useContext(UserContext);
   const [owned, setOwned] = useState([]);
   const [bikes, setBikes] = useState([]);
@@ -42,7 +36,7 @@ const Owned = () => {
   }, [owned.length]);
 
   return (
-    <div style={ownedStyles.card}>
+    <div>
       {bikes.map((bike, index) => (
         <div key={index} className="card mt-2 mb-2" id="Owned-card">
           <div className="card-header">{bike.model}</div>

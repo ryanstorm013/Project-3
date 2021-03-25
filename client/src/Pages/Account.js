@@ -21,8 +21,8 @@ const Account = () => {
     showSettings: false,
   })
 
-  const onLoad = function() {
-    setComponents({showRented: true})
+  const onLoad = function () {
+    setComponents({ showRented: true })
   }
 
 
@@ -67,9 +67,19 @@ const Account = () => {
 
   return (
     <>
-    <div className="parallax text-center">
-    <p id="text-jumbo">My Account</p>
-  </div>
+      <h2
+        style={{
+          color: "white",
+          margin: "auto",
+          marginTop: "5%",
+          paddingBottom: "10px",
+          fontSize: "62px",
+          opacity: ".5",
+          marginLeft: "20%",
+        }}
+      >
+        My Account
+        </h2>
 
       <Row>
         <div className="col-md-3">
