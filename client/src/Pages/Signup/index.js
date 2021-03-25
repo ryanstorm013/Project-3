@@ -34,9 +34,6 @@ function Signup() {
 
   return (
     <div>
-      {/* <div style={{ color: "white" }} className="mt-4">
-        <h2>Sign Up</h2>
-      </div> */}
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <h2
           style={{
