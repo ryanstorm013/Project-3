@@ -11,13 +11,23 @@ const Settings = () => {
     const { userData } = useContext(UserContext);
 
     const handleUsernameUpdate = async (e) => {
-        console.log(userData.userId);
         let newUsername = document.getElementById("userInput").value;
-        console.log(newUsername)
         try {
-            const updateUserName = await axios.put(`/api/users/${userData.userId}`, 
+            await axios.put(`/api/users/${userData.userId}`, 
             {
                 displayName: newUsername
+            });
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handlePasswordUpdate = async (e) => {
+        let newPassword = document.getElementById("userPassInput").value;
+        try {
+            await axios.put(`/api/users/${userData.userId}`, 
+            {
+                password: newPassword
             });
         } catch (err) {
             console.log(err)
@@ -36,21 +46,17 @@ const Settings = () => {
                             <ListGroup.Item>
                                 <Form>
                                     <Form.Label> 
-                                        Username:
+                                        Change Display Name:
                             </Form.Label>
-                                    <Form.Control type="username" placeholder="Change Username"  id="userInput"/>
+                                    <Form.Control type="username" placeholder="Enter New Display Name"  id="userInput"/>
                                     <Button variant="dark" onClick={(e) => handleUsernameUpdate(e)}>Submit</Button>
                                 </Form>
                                 <Form>
                                     <Form.Label>
-                                        Password:
+                                        Change Password:
                             </Form.Label>
-                                    <Form.Control type="password" placeholder="Old Password" />
-                                    <br></br>
-                                    <Form.Control type="password" placeholder="New Password" />
-                                    <br></br>
-                                    <Form.Control type="password" placeholder="Retype Password" />
-                                    <Button variant="dark">Submit</Button>
+                                    <Form.Control type="password" placeholder="Enter New Password" id="userPassInput" />
+                                    <Button variant="dark" onClick={(e) => handlePasswordUpdate(e)}>Submit</Button>
                                 </Form>
 
                             </ListGroup.Item>
