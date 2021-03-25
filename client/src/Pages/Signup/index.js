@@ -39,10 +39,10 @@ function Signup() {
           style={{
             color: "white",
             margin: "auto",
-            paddingBottom: "40px",
-            textAlign: "center",
+            paddingBottom: "10px",
             fontSize: "62px",
             opacity: ".5",
+            marginLeft: "30%"
           }}
         >
           Sign Up
@@ -59,6 +59,7 @@ function Signup() {
               />
             </Col>
           </Row>
+          <br></br>
 
           <Row className="form-group">
             <Col size="12">
@@ -71,6 +72,7 @@ function Signup() {
               />
             </Col>
           </Row>
+          <br></br>
 
           <Row className="form-group">
             <Col size="12">
@@ -83,8 +85,9 @@ function Signup() {
               />
             </Col>
           </Row>
+          <br></br>
 
-          <button className="btn btn-success" type="submit">
+          <button className="btn btn-success" id="signupbtn" type="submit">
             Submit
           </button>
         </Container>

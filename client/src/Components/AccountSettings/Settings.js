@@ -1,10 +1,43 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { ListGroup } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/button";
+import axios from "axios";
+import UserContext from "../../Context/UserContext";
 
 const Settings = () => {
+
+    const { userData } = useContext(UserContext);
+    const [checkUserChange, setCheckUserChange] = useState(false);
+    const [checkPassChange, setCheckPassChange] = useState(false);
+
+    const handleUsernameUpdate = async (e) => {
+        let newUsername = document.getElementById("userInput").value;
+        setCheckUserChange(true);
+        try {
+            await axios.put(`/api/users/${userData.userId}`, 
+            {
+                displayName: newUsername
+            });
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handlePasswordUpdate = async (e) => {
+        let newPassword = document.getElementById("userPassInput").value;
+        setCheckPassChange(true);
+        try {
+            await axios.put(`/api/users/${userData.userId}`, 
+            {
+                password: newPassword
+            });
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <div>
             <div>
@@ -16,22 +49,22 @@ const Settings = () => {
                         <Card.Body>
                             <ListGroup.Item>
                                 <Form>
-                                    <Form.Label>
-                                        Username:
+                                    <Form.Label> 
+                                        Change Display Name:
                             </Form.Label>
-                                    <Form.Control type="username" placeholder="Change Username" />
-                                    <Button variant="dark">Submit</Button>
+                                    <Form.Control type="username" placeholder="Enter New Display Name"  id="userInput"/>
+                                    <Button variant="dark" onClick={(e) => handleUsernameUpdate(e)}>Submit</Button>
+                                    {checkUserChange && (<p style={{ textAlign: "center" }}>Display Name Updated!</p>)}
                                 </Form>
+
+
                                 <Form>
                                     <Form.Label>
-                                        Password:
+                                        Change Password:
                             </Form.Label>
-                                    <Form.Control type="password" placeholder="Old Password" />
-                                    <br></br>
-                                    <Form.Control type="password" placeholder="New Password" />
-                                    <br></br>
-                                    <Form.Control type="password" placeholder="Retype Password" />
-                                    <Button variant="dark">Submit</Button>
+                                    <Form.Control type="password" placeholder="Enter New Password" id="userPassInput" />
+                                    <Button variant="dark" onClick={(e) => handlePasswordUpdate(e)}>Submit</Button>
+                                    {checkPassChange && (<p style={{ textAlign: "center" }}>Password Updated!</p>)}
                                 </Form>
 
                             </ListGroup.Item>

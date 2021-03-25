@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import UserContext from "../Context/UserContext";
 import { useHistory } from "react-router-dom";
+import "./listing.css";
 
 const Listings = () => {
   const { userData } = useContext(UserContext);
@@ -20,12 +21,12 @@ const Listings = () => {
     try {
       const login = localStorage.getItem("auth-token");
       if (login === "" || login !== userData.userId) {
-        history.push("/login")
+        history.push("/login");
       }
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   // Data to display
   useEffect(async () => {

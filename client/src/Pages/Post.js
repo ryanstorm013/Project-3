@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import UserContext from "../Context/UserContext";
 import { useHistory } from "react-router-dom";
+import "./post.css";
 
 const Post = () => {
   const { userData } = useContext(UserContext);

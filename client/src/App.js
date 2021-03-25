@@ -10,6 +10,8 @@ import Account from "./Pages/Account";
 import Listings from "./Pages/Listings";
 import Post from "./Pages/Post";
 import Footer from "./Components/Footer/Footer";
+import Navi from "./Components/Nav/Nav";
+
 
 function App() {
   const [bikes, setbikes] = useState({ list: [] });
@@ -42,9 +44,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Link to={"/"}>Home</Link> <Link to={"/signup"}>Signup</Link>{" "}
+        <Navi/>
+        {/* <Link to={"/"}>Home</Link> <Link to={"/signup"}>Signup</Link>{" "}
         <Link to={"/login"}>Login</Link> <Link to={"/account"}>My Account</Link>{" "}
-        <Link to={"/listings"}>Listings</Link> <Link to={"/post"}>Post</Link>
+        <Link to={"/listings"}>Listings</Link> <Link to={"/post"}>Post</Link> */}
         <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
             <Route path={"/signup"} component={Signup} />

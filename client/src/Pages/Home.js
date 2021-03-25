@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import "../Pages/home.css";
 import UserContext from "../Context/UserContext";
+import "./home.css";
+
+
 const Home = () => {
   const history = useHistory();
   const { userData } = useContext(UserContext);
@@ -22,7 +24,17 @@ const Home = () => {
   };
 
   const handleReturnClick = () => {
-    let path = "/login";
+    let path;
+    try {
+      const loggedIn = localStorage.getItem("auth-token");
+      if (loggedIn === userData.userId && loggedIn !== "") {
+        path = "/account";
+      } else {
+        path = "/signup";
+      }
+    } catch (err) {
+      console.log(err)
+    }
     history.push(path);
   };
 
