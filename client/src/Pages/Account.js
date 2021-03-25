@@ -6,6 +6,7 @@ import Owned from '../Components/AccountOwned/Owned';
 import Rented from '../Components/AccountRented/Rented';
 import Settings from '../Components/AccountSettings/Settings';
 import UserContext from "../Context/UserContext"
+import "./account.css";
 
 
 const Account = () => {
@@ -64,22 +65,34 @@ const Account = () => {
 
   return (
     <>
-      <h1 style={accountStyles.accountHeading}>My Account</h1>
+      <h2
+          style={{
+            color: "white",
+            margin: "auto",
+            marginTop: "5%",
+            paddingBottom: "10px",
+            fontSize: "62px",
+            opacity: ".5",
+            marginLeft: "20%",
+          }}
+        >
+          My Account
+        </h2>
 
       <Row>
         <div className="col-md-3">
           <div className='vertNav' style={accountStyles.vertNav}>
             <Nav className="flex-column">
-              <button className="btn btn-outline-secondary" onClick={() => setComponents({ showSettings: true })} style={accountStyles.accountBtn}>Settings</button>
-              <button className="btn btn-outline-secondary" onClick={() => setComponents({ showOwned: true })} style={accountStyles.accountBtn}>Owned</button>
-              <button className="btn btn-outline-secondary" onClick={() => setComponents({ showRented: true })} style={accountStyles.accountBtn}>Rented</button>
-              <button className="btn btn-outline-secondary" onClick={() => setComponents({ showLogout: true })} style={accountStyles.accountBtn}>Logout</button>
+              <button id="accountBtn" className="btn btn-outline-secondary" onClick={() => setComponents({ showSettings: true })} style={accountStyles.accountBtn}>Settings</button>
+              <button id="accountBtn" className="btn btn-outline-secondary" onClick={() => setComponents({ showOwned: true })} style={accountStyles.accountBtn}>Owned</button>
+              <button id="accountBtn" className="btn btn-outline-secondary" onClick={() => setComponents({ showRented: true })} style={accountStyles.accountBtn}>Rented</button>
+              <button id="accountBtn" className="btn btn-outline-secondary" onClick={() => setComponents({ showLogout: true })} style={accountStyles.accountBtn}>Logout</button>
             </Nav>
           </div>
         </div>
 
         <div className="col-md-9" style={accountStyles.contentSection}>
-          <div>
+          <div id="accountInfo">
             {components.showRented && <Rented />}
             {components.showSettings && <Settings />}
             {components.showOwned && <Owned />}

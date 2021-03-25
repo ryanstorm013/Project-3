@@ -47,6 +47,7 @@ const Home = () => {
         <button onClick={handleRentClick} className="btn btn-dark">
           Rent
         </button>
+      <br></br>
         <button onClick={handleReturnClick} className="btn btn-dark">
           Return
         </button>
