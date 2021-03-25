@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { ListGroup } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
@@ -9,9 +9,12 @@ import UserContext from "../../Context/UserContext";
 const Settings = () => {
 
     const { userData } = useContext(UserContext);
+    const [checkUserChange, setCheckUserChange] = useState(false);
+    const [checkPassChange, setCheckPassChange] = useState(false);
 
     const handleUsernameUpdate = async (e) => {
         let newUsername = document.getElementById("userInput").value;
+        setCheckUserChange(true);
         try {
             await axios.put(`/api/users/${userData.userId}`, 
             {
@@ -24,6 +27,7 @@ const Settings = () => {
 
     const handlePasswordUpdate = async (e) => {
         let newPassword = document.getElementById("userPassInput").value;
+        setCheckPassChange(true);
         try {
             await axios.put(`/api/users/${userData.userId}`, 
             {
@@ -50,13 +54,17 @@ const Settings = () => {
                             </Form.Label>
                                     <Form.Control type="username" placeholder="Enter New Display Name"  id="userInput"/>
                                     <Button variant="dark" onClick={(e) => handleUsernameUpdate(e)}>Submit</Button>
+                                    {checkUserChange && (<p style={{ textAlign: "center" }}>Display Name Updated!</p>)}
                                 </Form>
+
+
                                 <Form>
                                     <Form.Label>
                                         Change Password:
                             </Form.Label>
                                     <Form.Control type="password" placeholder="Enter New Password" id="userPassInput" />
                                     <Button variant="dark" onClick={(e) => handlePasswordUpdate(e)}>Submit</Button>
+                                    {checkPassChange && (<p style={{ textAlign: "center" }}>Password Updated!</p>)}
                                 </Form>
 
                             </ListGroup.Item>
