@@ -37,6 +37,9 @@ module.exports = {
   },
   updateOne: async (req, res) => {
     try {
+      if (req.body.password) {
+        req.body.password = bcrypt.hashSync(req.body.password);
+      }
       const updateUser = await User.updateOne(
         { _id: req.params.id },
         { $set: req.body }
