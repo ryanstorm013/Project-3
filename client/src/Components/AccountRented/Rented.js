@@ -1,10 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ListGroup } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
 import axios from "axios";
 import UserContext from "../../Context/UserContext";
 
 const Rented = () => {
+
+  const rentedStyles = {
+    card: {
+      width: "600px",
+    }
+  }
+
   const { userData } = useContext(UserContext);
 
   const [rented, setRented] = useState([]);
@@ -80,7 +85,7 @@ const Rented = () => {
               Return Bike!
             </button>
             {checkRented && (
-              <p style={{ textAlign: "center" }}>Bike Returned</p>
+              <p style={{ textAlign: "center" }}>Bike Returned!</p>
             )}
           </div>
         </div>

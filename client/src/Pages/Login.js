@@ -11,6 +11,7 @@ import bcrypt from "bcryptjs"
 import "../Pages/login.css";
 
 const Login = () => {
+
   const { setUserData } = useContext(UserContext);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -31,20 +32,13 @@ const Login = () => {
   };
 
   return (
+    <>
+    <div className="parallax text-center">
+    <p id="text-jumbo">Log In</p>
+  </div>
     <div>
       <form className="login-form" onSubmit={handleSubmit}>
-      <h2
-          style={{
-            color: "white",
-            margin: "auto",
-            paddingBottom: "10px",
-            fontSize: "62px",
-            opacity: ".5",
-            marginLeft: "35%"
-          }}
-        >
-          Login
-        </h2>
+
 
         <Container className="mt-3 px-5">
           <Row className="form-group">
@@ -73,12 +67,13 @@ const Login = () => {
           </Row>
           <br></br>
 
-          <button className="btn btn-success" id="loginbtn" type="submit">
+          <button  className="btn btn-success" id="loginbtn" type="submit">
             Submit
           </button>
         </Container>
       </form>
     </div>
+    </>
   );
 };
 

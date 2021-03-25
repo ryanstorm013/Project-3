@@ -10,6 +10,7 @@ import "./account.css";
 
 
 const Account = () => {
+
   const history = useHistory();
   const { userData } = useContext(UserContext);
 
@@ -55,6 +56,7 @@ const Account = () => {
     },
     contentSection: {
       marginTop: "40px",
+      width: "600px",
     }
   }
 
@@ -65,19 +67,9 @@ const Account = () => {
 
   return (
     <>
-      <h2
-          style={{
-            color: "white",
-            margin: "auto",
-            marginTop: "5%",
-            paddingBottom: "10px",
-            fontSize: "62px",
-            opacity: ".5",
-            marginLeft: "20%",
-          }}
-        >
-          My Account
-        </h2>
+    <div className="parallax text-center">
+    <p id="text-jumbo">My Account</p>
+  </div>
 
       <Row>
         <div className="col-md-3">

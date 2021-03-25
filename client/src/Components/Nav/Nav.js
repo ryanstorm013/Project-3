@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 const Navi = (props) => {
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

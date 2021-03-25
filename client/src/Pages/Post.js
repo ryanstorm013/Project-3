@@ -50,80 +50,85 @@ const Post = () => {
   }, []);
 
   return (
-    <div style={{ color: "grey" }}>
-      <div className="jumbotron">
-        <h2
-          style={{
-            color: "white",
-            marginTop: "5%",
-            paddingBottom: "10px",
-            fontSize: "62px",
-            opacity: ".5",
-            marginLeft: "16%",
-          }}
-        >
-          Post A New Bike
+    <>
+      <div className="parallax text-center">
+        <p id="text-jumbo">Post Your Bike</p>
+      </div>
+      <div style={{ color: "grey" }}>
+        <div className="jumbotron">
+          <h2
+            style={{
+              color: "white",
+              marginTop: "5%",
+              paddingBottom: "10px",
+              fontSize: "62px",
+              opacity: ".5",
+              marginLeft: "16%",
+            }}
+          >
+            Post A New Bike
         </h2>
-      </div>
-      <div className="container" id="postContainer">
-        <form onSubmit={submitPost}>
-          <div className="form-group">
-            <label>Model</label>
-            <input
-              className="form-control"
-              onChange={onChange}
-              type="text"
-              name="model"
-            />
-          </div>
-          <div className="form-group">
-            <label>Zip</label>
-            <input
-              className="form-control"
-              onChange={onChange}
-              type="number"
-              name="zip"
-            />
-          </div>
-          <div className="form-group">
-            <label>Price/h</label>
-            <input
-              className="form-control"
-              onChange={onChange}
-              type="number"
-              name="price"
-            />
-          </div>
-          <div className="form-group">
-            <label>Color</label>
-            <input
-              className="form-control"
-              onChange={onChange}
-              type="text"
-              name="color"
-            />
-          </div>
-
-          <div className="form-group">
-            <label># of Wheels</label>
-            <div className="input-group mb-3 form-control">
-
-              <select className="custom-select form-control" id="inputGroupSelect01" onChange={onChange} name="wheels">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-                <option value="4">Four</option>
-              </select>
+        </div>
+        <div className="container" id="postContainer">
+          <form onSubmit={submitPost}>
+            <div className="form-group">
+              <label>Model</label>
+              <input
+                className="form-control"
+                onChange={onChange}
+                type="text"
+                name="model"
+              />
             </div>
-          </div>
+            <div className="form-group">
+              <label>Zip</label>
+              <input
+                className="form-control"
+                onChange={onChange}
+                type="number"
+                name="zip"
+              />
+            </div>
+            <div className="form-group">
+              <label>Price/h</label>
+              <input
+                className="form-control"
+                onChange={onChange}
+                type="number"
+                name="price"
+              />
+            </div>
+            <div className="form-group">
+              <label>Color</label>
+              <input
+                className="form-control"
+                onChange={onChange}
+                type="text"
+                name="color"
+              />
+            </div>
 
-          <button type="submit" className="btn btn-secondary">
-            Post My Bike
+            <div className="form-group">
+              <label># of Wheels</label>
+              <div className="input-group mb-3 form-control">
+
+                <select className="custom-select form-control" id="inputGroupSelect01" onChange={onChange} name="wheels">
+                  <option selected>Choose...</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                  <option value="4">Four</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" className="btn btn-secondary">
+              Post My Bike
           </button>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
