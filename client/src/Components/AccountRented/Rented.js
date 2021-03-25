@@ -63,7 +63,6 @@ const Rented = () => {
 
   return (
     <div>
-      <h1> Hi </h1>
       {bikes.map((bike, index) => (
         <div key={index} className="card mt-2 mb-2">
           <div className="card-header">{bike.model}</div>

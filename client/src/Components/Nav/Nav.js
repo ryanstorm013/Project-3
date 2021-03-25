@@ -37,7 +37,7 @@ const Navi = (props) => {
               Sign up
             </Link>
             <Link className="nav-link" to="/login">
-              Login in
+              Login
             </Link>
             <Link className="nav-link" to="/post">
               Post
