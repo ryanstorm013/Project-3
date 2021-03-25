@@ -52,7 +52,18 @@ const Post = () => {
   return (
     <div style={{ color: "grey" }}>
       <div className="jumbotron">
-        <h1 className="display-4">Post a new bike:</h1>
+      <h2
+          style={{
+            color: "white",
+            marginTop: "5%",
+            paddingBottom: "10px",
+            fontSize: "62px",
+            opacity: ".5",
+            marginLeft: "16%",
+          }}
+        >
+          Post A New Bike
+        </h2>
       </div>
       <div className="container">
         <form onSubmit={submitPost}>

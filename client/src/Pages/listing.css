@@ -28,3 +28,7 @@ h2 {
 .btn-outline-secondary {
     color: #ffffff;
 }
+
+#listingContainer {
+    margin-top: 5%;
+}
