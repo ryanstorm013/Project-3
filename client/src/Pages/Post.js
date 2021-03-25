@@ -65,7 +65,7 @@ const Post = () => {
           Post A New Bike
         </h2>
       </div>
-      <div className="container">
+      <div className="container" id="postContainer">
         <form onSubmit={submitPost}>
           <div className="form-group">
             <label>Model</label>
