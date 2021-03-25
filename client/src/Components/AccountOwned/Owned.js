@@ -1,10 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ListGroup } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
 import axios from "axios";
 import UserContext from "../../Context/UserContext";
 
 const Owned = () => {
+
+  const ownedStyles = {
+    card: {
+      width: "600px",
+    }
+  }
+
   const { userData } = useContext(UserContext);
   const [owned, setOwned] = useState([]);
   const [bikes, setBikes] = useState([]);
@@ -37,7 +42,7 @@ const Owned = () => {
   }, [owned.length]);
 
   return (
-    <div>
+    <div style={ownedStyles.card}>
       {bikes.map((bike, index) => (
         <div key={index} className="card mt-2 mb-2">
           <div className="card-header">{bike.model}</div>

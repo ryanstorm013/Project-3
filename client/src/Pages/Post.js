@@ -50,20 +50,13 @@ const Post = () => {
   }, []);
 
   return (
+    <>
+    <div className="parallax text-center">
+    <p id="text-jumbo">Post Your Bike</p>
+  </div>
     <div style={{ color: "grey" }}>
       <div className="jumbotron">
-      <h2
-          style={{
-            color: "white",
-            marginTop: "5%",
-            paddingBottom: "10px",
-            fontSize: "62px",
-            opacity: ".5",
-            marginLeft: "16%",
-          }}
-        >
-          Post A New Bike
-        </h2>
+
       </div>
       <div className="container" id="postContainer">
         <form onSubmit={submitPost}>
@@ -132,6 +125,7 @@ const Post = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

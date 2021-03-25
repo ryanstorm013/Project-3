@@ -196,18 +196,12 @@ const Listings = () => {
   };
 
   return (
+    <>
+    <div className="parallax text-center">
+    <p id="text-jumbo">Listings</p>
+  </div>
     <div className="container" id="listingContainer">
-      <h2
-          style={{
-            color: "white",
-            paddingBottom: "10px",
-            fontSize: "62px",
-            opacity: ".5",
-            marginLeft: "50%",
-          }}
-        >
-          Listings
-        </h2>
+
 
         <h3
           style={{
@@ -460,6 +454,7 @@ const Listings = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 
