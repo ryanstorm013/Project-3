@@ -52,7 +52,7 @@ const Post = () => {
   return (
     <div style={{ color: "grey" }}>
       <div className="jumbotron">
-      <h2
+        <h2
           style={{
             color: "white",
             marginTop: "5%",
@@ -106,10 +106,8 @@ const Post = () => {
 
           <div className="form-group">
             <label># of Wheels</label>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <label className="input-group-text" for="inputGroupSelect01"># of Wheels</label>
-              </div>
+            <div className="input-group mb-3 form-control">
+
               <select className="custom-select form-control" id="inputGroupSelect01" onChange={onChange} name="wheels">
                 <option selected>Choose...</option>
                 <option value="1">One</option>
@@ -118,14 +116,8 @@ const Post = () => {
                 <option value="4">Four</option>
               </select>
             </div>
-            {/* <input
-              className="form-control"
-              onChange={onChange}
-              type="number"
-              name="wheels"
-            /> */}
           </div>
-          <hr />
+
           <button type="submit" className="btn btn-secondary">
             Post My Bike
           </button>

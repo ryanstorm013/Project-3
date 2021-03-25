@@ -1,5 +1,8 @@
 body {
   background-image: url("./bike_street_night_wall-634607.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .card-footer {

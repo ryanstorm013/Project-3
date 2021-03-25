@@ -63,8 +63,8 @@ const Rented = () => {
 
   return (
     <div>
-      {/* {bikes.map((bike, index) => (
-        <div key={index} className="card mt-2 mb-2">
+      {bikes.map((bike, index) => (
+        <div key={index} className="card mt-2 mb-2" id="Rent-card">
           <div className="card-header">{bike.model}</div>
           <div className="card-body">
             <p className="card-text">Location: {bike.zip}</p>
@@ -84,7 +84,7 @@ const Rented = () => {
             )}
           </div>
         </div>
-      ))} */}
+      ))}
     </div>
   );
 };

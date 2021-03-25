@@ -39,7 +39,7 @@ const Owned = () => {
   return (
     <div>
       {bikes.map((bike, index) => (
-        <div key={index} className="card mt-2 mb-2">
+        <div key={index} className="card mt-2 mb-2" id="Owned-card">
           <div className="card-header">{bike.model}</div>
           <div className="card-body">
             <p className="card-text">Location: {bike.zip}</p>
