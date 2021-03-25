@@ -4,7 +4,6 @@ import Col from "../../Components/Col";
 import Row from "../../Components/Row";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import bcrypt from "bcryptjs"
 import "./signup.css";
 import UserContext from "../../Context/UserContext";
 
