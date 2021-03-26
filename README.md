@@ -3,7 +3,7 @@
 
 ## Description
 
-Share My Bike is a simple Fullstack MERN APP employee directory app that makes it easy to rent, post, or return a bike in your community.
+Share My Bike is a simple Fullstack MERN APP that makes it easy to rent, post, or return a bike in your community.
 
 ## User Story
 
