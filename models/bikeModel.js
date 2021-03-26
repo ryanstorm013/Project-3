@@ -25,6 +25,16 @@ const bikeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  rented: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  renterId: {
+    type: String,
+  }
 });
 
-module.exports = Bike = mongoose.model("bike", bikeSchema);
+var Bike = mongoose.model("bike", bikeSchema);
+
+module.exports = Bike;
