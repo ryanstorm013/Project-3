@@ -45,9 +45,13 @@ Connection between Transaction collection and Bike collection
 ## Usage
 
 Sign up an account with email and password with your desiared user name.
+
 log in with email and password.
+
 Choose to rent a bike or post a bike.
+
 view and filter listings.
+
 View your account page with settings and rent and own history.
 
 ## Finished Product
