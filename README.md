@@ -28,8 +28,11 @@ When I select a bike to rent, I am redirected to my Accounts where I can see my 
 ## Challenges
 
 useContext
+
 Listings Page
+
 Rented/Owned
+
 Connection between Transaction collection and Bike collection
 
 ## Table of Contents
@@ -69,10 +72,15 @@ Heroko : https://rent-my-bike-team07.herokuapp.com/
 If you have any questions about the repo, please contact us:
 
 James Totah:       https://github.com/jtwob
+
 Jamly Miller:      https://github.com/Jamly-Miller
+
 John Delizo:       https://github.com/johnmoolah
+
 Lauren Hutchinson: https://github.com/lhutchinson22
+
 Liz Larkin:        https://github.com/lizlarkin
+
 Ryan Reyes:        https://github.com/ryanstorm013
 
 
